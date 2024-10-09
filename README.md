@@ -92,4 +92,6 @@ Untuk penjelasan lengkap terkait deskripsi dari setiap Role
 
 ## 💾 Dataset
 
+Sumber dataset ada disini [Dataset](/assets/Dataset%20Snack%20Depok.csv)
 
+Dataset ini merupakan hasil informasi dari 100 produk cemilan-ringan(snack) yang dikumpulkan dari berbagai sumber oleh kelompok kami.
