@@ -7,10 +7,10 @@
 | NPM | Nama | Username |
 | -- | -- | -- |
 | 2306165742 | Bryan Mitch | brjaeger
-| 2306231422 | Muhammad Farhan Ramadhan | DanielAngger
+| 2306231422 | Muhammad Farhan Ramadhan | vmuhfarhan
 | 2306221352 | Faiz Akram Pribadi | FaizAP412
 | 2306245453 | Indah Cahya Puspitahati | indahcahyaaa
-| 2306275973 | Daniel Angger Dewandaru | vmuhfarhan
+| 2306275973 | Daniel Angger Dewandaru | DanielAngger
 
 <br>
 
