@@ -18,10 +18,11 @@ class Product(models.Model):
     ]
 
     # Store details
-    nama_toko = models.CharField(max_length=255)
+    nama_toko_lokasi = models.CharField(max_length=255)
     nama_product = models.CharField(max_length=255)
     harga = models.IntegerField()
     deskripsi = models.TextField()
+    kalori = models.IntegerField()
     
     # Tags with choices
     tag_kalori = models.CharField(max_length=6, choices=KALORI_CHOICES)
@@ -29,10 +30,10 @@ class Product(models.Model):
     tag_gula = models.CharField(max_length=6, choices=GULA_CHOICES)
 
     def __str__(self):
-        return f"{self.nama_product} from {self.nama_toko}"
+        return f"{self.nama_product} from {self.nama_toko_lokasi}"  # Update to reflect new field
 
 class MyBites(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     added_on = models.DateTimeField(auto_now_add=True)
 
