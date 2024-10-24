@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import FileExtensionValidator
 
 class Product(models.Model):
     CALORIE_CHOICES = [
@@ -33,12 +32,17 @@ class Product(models.Model):
     calorie_tag = models.CharField(max_length=4, choices=CALORIE_CHOICES)
     vegan_tag = models.CharField(max_length=9, choices=VEGAN_CHOICES)
     sugar_tag = models.CharField(max_length=4, choices=SUGAR_CHOICES)
-    image = models.URLField(max_length=500, default="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg")
+    image = models.URLField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def get_store_display(self):
         return dict(self.STORE_CHOICES)[self.store]
+
+    def get_image_url(self):
+        if self.image:
+            return self.image
+        return f"https://placehold.co/400x300?text={self.name.replace(' ', '+')}"
     
     def __str__(self):
         return f"{self.name} - {self.get_store_display()}"
