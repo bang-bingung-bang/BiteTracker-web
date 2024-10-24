@@ -15,7 +15,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-<<<<<<< HEAD
 from django.urls import include, path
 from artibites import views  # Import views dari aplikasi artibites
 
@@ -23,14 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('artibites/', include('artibites.urls')),  # URL untuk artibites
     path('', views.main_page, name='home'),  # Root URL mengarah ke main_page artibites
-=======
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('main.urls')),
-    path('mybites/', include('MyBites.urls', namespace='MyBites')),
->>>>>>> 168a6b6940ec932cbc4404070213aa9edc007fa9
 ]
 
 
+ 
