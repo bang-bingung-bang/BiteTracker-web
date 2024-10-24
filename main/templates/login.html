@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="hero-image">
+    <div class="login">
+        <h1>Log In</h1>
+        <p>New to this site? <a href="{% url 'main:register' %}">Sign Up</a></p>
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
+                    <td></td>
+                    <td><input class="btn login_btn" type="submit" value="Log In" /></td>
+                </tr>
+            </table>
+        </form>
+
+        <p><a href="">Forgot password?</a></p>
+
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
