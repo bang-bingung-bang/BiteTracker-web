@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Hapus Artikel</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="container">
+    <h1>Apakah kamu yakin ingin menghapus artikel ini?</h1>
+    <p>{{ article.title }}</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Hapus</button>
+        <a href="{% url 'article_detail' article.id %}" class="btn btn-secondary">Kembali ke Artikel</a>
+    </form>
+</div>
+{% endblock content %}

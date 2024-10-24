@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<title>Halaman Utama</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="container">
+    <h1>Selamat Datang di ArtiBites</h1>
+
+    <a href="{% url 'article_list' %}">Lihat Daftar Artikel</a>
+
+    {% if user.is_staff %}
+    <a href="{% url 'add_article' %}">Tambah Artikel</a>
+    {% endif %}
+
+    <a href="{% url 'logout' %}">
+        <button>Logout</button>
+    </a>
+</div>
+{% endblock content %}

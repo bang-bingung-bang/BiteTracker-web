@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>{{ article.title }}</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="article-detail">
+    <h1>{{ article.title }}</h1>
+    <p><strong>Category:</strong> {{ article.category }}</p>
+    <p>{{ article.content }}</p>
+
+    <!-- Menampilkan gambar jika ada URL gambar yang valid -->
+    {% if article.image %}
+        <img src="{{ article.image }}" alt="Article Image" style="max-width: 100%;">
+    {% else %}
+        <p>No image available.</p>
+    {% endif %}
+
+    {% if user.is_staff %}
+    <!-- Tombol Edit dan Hapus hanya muncul untuk admin -->
+    <div class="article-actions">
+        <a href="{% url 'edit_article' article.id %}" class="btn btn-primary">Edit</a>
+        <form method="POST" action="{% url 'delete_article' article.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Hapus</button>
+        </form>
+    </div>
+    {% endif %}
+    
+    <a href="{% url 'main_page' %}" class="btn">Kembali ke Halaman Utama</a>
+</div>
+{% endblock content %}

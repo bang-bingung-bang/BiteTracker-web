@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Artikel</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Daftar Artikel</h1>
+        {% for article in articles %}
+        <div class="article-item">
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.excerpt }}</p>
+            <a href="{% url 'article_detail' article.id %}">Baca Selengkapnya</a>
+        </div>
+        {% empty %}
+        <p>Tidak ada artikel</p>
+        {% endfor %}
+
+        <!-- Tombol untuk kembali ke halaman utama -->
+        <a href="{% url 'main_page' %}" class="btn btn-secondary">Kembali ke Halaman Utama</a>
+    </div>
+</body>
+</html>
