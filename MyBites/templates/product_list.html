@@ -1,0 +1,17 @@
+<body>
+    <h1>Product List</h1>
+    
+    {% for product in products %}
+        <div class="product">
+            <h2>{{ product.nama_product }}</h2>
+            <p>Store: {{ product.nama_toko_lokasi }}</p>
+            <p>Price: {{ product.harga }}</p>
+            <p>Description: {{ product.deskripsi }}</p>
+            <p>Sugar Tag: {{ product.tag_gula }}</p>
+            <p>Vegan Tag: {{ product.tag_vegan }}</p>
+            <p>Calory Tag: {{ product.tag_kalori }}</p>
+            
+            <a href="{% url 'MyBites:add_to_wishlist' product.id %}">Add to Wishlist</a>
+        </div>
+    {% endfor %}
+</body>
