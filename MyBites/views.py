@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 def show_main(request):
-    return render(request, 'MyBites/main.html')
+    return render(request, 'mybites.html')
 
 def show_xml(request):
     data = Product.objects.all()
@@ -30,7 +30,7 @@ def add_to_wishlist(request, product_id):
 def view_wishlist(request):
     # if request.user.is_authenticated:
     wishlist_items = MyBites.objects.all()
-    return render(request, 'MyBites/wishlist.html', {'wishlist_items': wishlist_items})
+    return render(request, 'wishlist.html', {'wishlist_items': wishlist_items})
     # else:
     #     return render(request, 'MyBites/wishlist.html', {'wishlist_items': [], 'message': 'Please log in to see your wishlist.'})
     
@@ -41,4 +41,4 @@ def remove_from_wishlist(request, product_id):
 
 def show_product_list(request):
     products = Product.objects.all()
-    return render(request, 'MyBites/product_list.html', {'products': products})
+    return render(request, 'product_list.html', {'products': products})

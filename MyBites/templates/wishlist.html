@@ -2,6 +2,10 @@
 {% if message %}
     <p>{{ message }}</p>
 {% else %}
+    <li>
+        <a href="{% url 'MyBites:show_main'%}">Back to main page</a>
+        <a href="{% url 'MyBites:product_list'%}">Back to product list</a>
+    </li>
     <ul>
         {% for item in wishlist_items %}
             <li>
