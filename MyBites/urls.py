@@ -4,7 +4,7 @@ from MyBites.views import show_main, show_xml, show_json, add_to_wishlist, view_
 app_name = 'MyBites'
 
 urlpatterns = [
-    path('', show_main, name='show_main'),
+    path('mybites/', show_main, name='show_main'),
     path('xml/', show_xml, name='show_xml'),
     path('json/', show_json, name='show_json'),
     path('wishlist/', view_wishlist, name='wishlist'),
