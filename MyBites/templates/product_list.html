@@ -1,9 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
+{% endblock meta %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
 <body>
-    <h1>Product List</h1>
+    <h1 class="py-9 text-2xl">Product List</h1>
     
     {% for product in products %}
-        <div class="product">
-            <h2>{{ product.nama_product }}</h2>
+        <div class="product py-4">
+            <h2 class="py-1 text-lg">{{ product.nama_product }}</h2>
             <p>Store: {{ product.nama_toko_lokasi }}</p>
             <p>Price: {{ product.harga }}</p>
             <p>Description: {{ product.deskripsi }}</p>
@@ -15,3 +25,4 @@
         </div>
     {% endfor %}
 </body>
+{% endblock content %}
