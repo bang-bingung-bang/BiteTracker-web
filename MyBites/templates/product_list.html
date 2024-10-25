@@ -13,24 +13,44 @@
         <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -120%); color: black;">Product List</h1>
     </div>
     <div class="mt-80 text-center">
-        <a href="{% url 'MyBites:wishlist' %}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white mx-5 my-5">What's in MyBites?</a>
+        <!-- MyBites Button -->
+        <a href="{% url 'MyBites:wishlist' %}" class="rounded-md px-3 py-2 text-sm bg-gray-400 font-medium text-gray-900 hover:bg-gray-800 hover:text-white mx-5 my-5 shadow-lg transition-all duration-300">
+            What's in MyBites?
+        </a>
         
-        <div class="product-grid grid grid-cols-3 gap-4">
+        <!-- Product Grid -->
+        <div class="product-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-8 mx-8">
             {% for product in products %}
-                <div class="product py-4 border p-4 rounded mx-5 my-5 bg-gray-100">
-                    <h2 class="py-1 text-lg font-bold">{{ product.nama_product }}</h2>
-                    <p class=" text-left">Store: {{ product.nama_toko_lokasi }}</p>
-                    <p class=" text-left">Price: Rp. {{ product.harga }}</p>
-                    <p class=" text-left">Description: {{ product.deskripsi }}</p>
-                    <p class=" text-left">Sugar Tag: {{ product.tag_gula }}</p>
-                    <p class=" text-left">Vegan Tag: {{ product.tag_vegan }}</p>
-                    <p class=" text-left">Calory Tag: {{ product.tag_kalori }}</p>
-                    <div class="my-5">
-                        <a href="{% url 'MyBites:add_to_wishlist' product.id %}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Add to MyBites</a>
+                <div class="product bg-gray-100 shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-300 rounded-lg overflow-hidden mx-auto hover:border-gray-500">
+                    <!-- Product Content -->
+                    <div class="p-6">
+                        <!-- Product Title -->
+                        <h2 class="text-2xl font-extrabold text-gray-900 mb-4 tracking-wider uppercase shadow-sm">
+                            {{ product.nama_product }}
+                        </h2>
+    
+                        <!-- Product Details -->
+                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Toko:</span> {{ product.nama_toko_lokasi }}</p>
+                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Harga:</span> <span class="text-amber-800">Rp. {{ product.harga }}</span></p>
+                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Deskripsi:</span> {{ product.deskripsi }}</p>
+    
+                        <!-- Product Tags -->
+                        <div class="flex flex-wrap items-center mt-4 space-x-2">
+                            <span class="bg-yellow-200 text-gray-800 px-1 py-1 rounded-full text-xs font-medium">Tag Gula: {{ product.tag_gula }}</span>
+                            <span class="bg-yellow-300 text-gray-900 px-1 py-1 rounded-full text-xs font-medium">Tag Vegan: {{ product.tag_vegan }}</span>
+                            <span class="bg-yellow-400 text-gray-900 px-1 py-1 rounded-full text-xs font-medium">Tag Kalori: {{ product.tag_kalori }}</span>
+                        </div>
+    
+                        <!-- Add to Wishlist Button -->
+                        <div class="mt-6">
+                            <a href="{% url 'MyBites:add_to_wishlist' product.id %}" class="block text-center rounded-md px-4 py-2 bg-amber-700 text-white font-bold hover:bg-black hover:text-gray-100 transition-colors duration-300">
+                                Add to MyBites
+                            </a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
-    </div>
+    </div>    
 </body>
 {% endblock content %}

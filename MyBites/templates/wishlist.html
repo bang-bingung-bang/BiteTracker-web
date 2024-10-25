@@ -17,8 +17,8 @@
         <p>{{ message }}</p>
     {% else %}
         <div class="py-4">
-            <a class="pr-4 rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white" href="{% url 'main:show_main'%} ">Back to main page</a>
-            <a href="{% url 'MyBites:product_list'%}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Back to product list</a>
+            <a class="pr-4 rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white" href="{% url 'main:show_main'%} ">Let's go back to main page!</a>
+            <a href="{% url 'MyBites:product_list'%}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Wanna see product list?</a>
         </div>
         <ul>
             <div class="item-grid grid grid-cols-3 gap-4">
@@ -26,7 +26,7 @@
                     <li>
                         <div class="product py-4 border p-4 rounded mx-5 my-5">
                             <p class="mb-5 text-xl font-bold">{{ item.product.nama_product }}</p>
-                            <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Remove</a>
+                            <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="rounded-md px-3 py-2 font-bold text-sm bg-red-300 font-medium text-red-900 hover:bg-red-700 hover:text-white">Remove</a>
                         </div>
                     </li>
                 {% empty %}
