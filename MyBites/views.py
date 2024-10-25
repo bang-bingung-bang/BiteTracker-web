@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 def show_main(request):
-    return render(request, 'mybites.html')
+    return render(request, 'main/main.html')
 
 def show_xml(request):
     data = Product.objects.all()
