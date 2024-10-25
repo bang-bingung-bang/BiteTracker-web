@@ -16,28 +16,43 @@
     {% if message %}
         <p>{{ message }}</p>
     {% else %}
-        <div class="py-4">
-            <a class="pr-4 rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white" href="{% url 'main:show_main'%} ">Let's go back to main page!</a>
-            <a href="{% url 'MyBites:product_list'%}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Wanna see product list?</a>
-        </div>
-        <ul>
-            <div class="item-grid grid grid-cols-3 gap-4">
-                {% for item in wishlist_items %}
-                    <li>
-                        <div class="product py-4 border p-4 rounded mx-5 my-5">
-                            <p class="mb-5 text-xl font-bold">{{ item.product.nama_product }}</p>
-                            <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="rounded-md px-3 py-2 font-bold text-sm bg-red-300 font-medium text-red-900 hover:bg-red-700 hover:text-white">Remove</a>
-                        </div>
-                    </li>
-                {% empty %}
-                <div class="lapar-image">
-                    <div class="hero-text custom-hero">
-                        <h3 class="mb-5 text-xl font-bold text-center">MyBites is empty.</h3>
+    <div class="py-6">
+        <!-- Navigation Buttons -->
+        <a class="pr-4 rounded-md px-4 py-2 text-sm bg-gray-400 font-medium text-gray-900 hover:bg-gray-800 hover:text-white transition-all duration-300 shadow-md" href="{% url 'main:show_main' %}">
+            Let's go back to main page!
+        </a>
+        <a href="{% url 'MyBites:product_list' %}" class="ml-4 rounded-md px-4 py-2 text-sm bg-gray-400 font-medium text-gray-900 hover:bg-gray-800 hover:text-white transition-all duration-300 shadow-md">
+            Wanna see product list?
+        </a>
+    </div>
+    
+    <ul>
+        <div class="item-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-8 mx-6">
+            {% for item in wishlist_items %}
+                <li>
+                    <!-- Wishlist Item -->
+                    <div class="product bg-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-300 rounded-lg p-6">
+                        <!-- Product Name -->
+                        <p class="mb-5 text-xl font-extrabold text-black uppercase tracking-wide">{{ item.product.nama_product }}</p>
+                        
+                        <!-- Remove Button -->
+                        <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="block rounded-md px-4 py-2 text-sm bg-red-400 font-bold text-red-900 hover:bg-red-700 hover:text-white transition-colors duration-300 text-center">
+                            Remove
+                        </a>
                     </div>
+                </li>
+            {% empty %}
+            <!-- Empty Wishlist -->
+            <div class="lapar-image col-span-full text-center">
+                <div class="hero-text custom-hero">
+                    <h3 class="mb-5 text-2xl font-bold text-gray-900">
+                        MyBites is empty.
+                    </h3>
                 </div>
-                {% endfor %}
             </div>
-        </ul>
+            {% endfor %}
+        </div>
+    </ul>    
 </div>
 {% endif %}
 {% endblock content %}
