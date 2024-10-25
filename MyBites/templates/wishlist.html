@@ -8,8 +8,8 @@
 {% block content %}
 {% include 'navbar.html' %}
 
-<div class="py-8 text-xl">
-    <h1>Your Wishlist</h1>
+<div class="hero-text custom-hero">
+    <h1>MyBites!</h1>
 </div>
 
 {% if message %}
@@ -17,18 +17,18 @@
 {% else %}
     <li>
         <div class="py-4">
-            <a class="pr-4" href="{% url 'main:show_main'%}">Back to main page</a>
-            <a href="{% url 'MyBites:product_list'%}">Back to product list</a>
+            <a class="pr-4 text-blue-500" href="{% url 'main:show_main'%} ">Back to main page</a>
+            <a href="{% url 'MyBites:product_list'%}" class="text-blue-500">Back to product list</a>
         </div>
     </li>
     <ul>
         {% for item in wishlist_items %}
             <li>
                 {{ item.product.nama_product }} 
-                <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}">Remove</a>
+                <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="text-blue-500">Remove</a>
             </li>
         {% empty %}
-            <li>Your wishlist is empty.</li>
+            <li>MyBites is empty.</li>
         {% endfor %}
     </ul>
 {% endif %}

@@ -10,19 +10,22 @@
 
 <body>
     <h1 class="py-9 text-2xl">Product List</h1>
+    <a href="{% url 'MyBites:wishlist' %}" class="text-blue-500">What's in MyBites?</a>
     
-    {% for product in products %}
-        <div class="product py-4">
-            <h2 class="py-1 text-lg">{{ product.nama_product }}</h2>
-            <p>Store: {{ product.nama_toko_lokasi }}</p>
-            <p>Price: {{ product.harga }}</p>
-            <p>Description: {{ product.deskripsi }}</p>
-            <p>Sugar Tag: {{ product.tag_gula }}</p>
-            <p>Vegan Tag: {{ product.tag_vegan }}</p>
-            <p>Calory Tag: {{ product.tag_kalori }}</p>
-            
-            <a href="{% url 'MyBites:add_to_wishlist' product.id %}">Add to Wishlist</a>
-        </div>
-    {% endfor %}
+    <div class="product-grid grid grid-cols-3 gap-4">
+        {% for product in products %}
+            <div class="product py-4 border p-4 rounded">
+                <h2 class="py-1 text-lg">{{ product.nama_product }}</h2>
+                <p>Store: {{ product.nama_toko_lokasi }}</p>
+                <p>Price: {{ product.harga }}</p>
+                <p>Description: {{ product.deskripsi }}</p>
+                <p>Sugar Tag: {{ product.tag_gula }}</p>
+                <p>Vegan Tag: {{ product.tag_vegan }}</p>
+                <p>Calory Tag: {{ product.tag_kalori }}</p>
+
+                <a href="{% url 'MyBites:add_to_wishlist' product.id %}" class="text-blue-500">Add to MyBites</a>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 {% endblock content %}
