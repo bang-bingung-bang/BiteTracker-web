@@ -9,23 +9,27 @@
 {% include 'navbar.html' %}
 
 <body>
-    <h1 class="py-9 text-2xl">Product List</h1>
-    <a href="{% url 'MyBites:wishlist' %}" class="text-blue-500">What's in MyBites?</a>
-    
-    <div class="product-grid grid grid-cols-3 gap-4">
-        {% for product in products %}
-            <div class="product py-4 border p-4 rounded">
-                <h2 class="py-1 text-lg">{{ product.nama_product }}</h2>
-                <p>Store: {{ product.nama_toko_lokasi }}</p>
-                <p>Price: {{ product.harga }}</p>
-                <p>Description: {{ product.deskripsi }}</p>
-                <p>Sugar Tag: {{ product.tag_gula }}</p>
-                <p>Vegan Tag: {{ product.tag_vegan }}</p>
-                <p>Calory Tag: {{ product.tag_kalori }}</p>
+    <div class="hero-text custom-hero">
+        <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -100%); color: black;">Product List</h1>
+    </div>
+    <div class="mt-80 text-center">
+        <a href="{% url 'MyBites:wishlist' %}" class="text-blue-500 mx-5 my-5">What's in MyBites?</a>
+        
+        <div class="product-grid grid grid-cols-3 gap-4">
+            {% for product in products %}
+                <div class="product py-4 border p-4 rounded mx-5 my-5">
+                    <h2 class="py-1 text-lg">{{ product.nama_product }}</h2>
+                    <p>Store: {{ product.nama_toko_lokasi }}</p>
+                    <p>Price: {{ product.harga }}</p>
+                    <p>Description: {{ product.deskripsi }}</p>
+                    <p>Sugar Tag: {{ product.tag_gula }}</p>
+                    <p>Vegan Tag: {{ product.tag_vegan }}</p>
+                    <p>Calory Tag: {{ product.tag_kalori }}</p>
 
-                <a href="{% url 'MyBites:add_to_wishlist' product.id %}" class="text-blue-500">Add to MyBites</a>
-            </div>
-        {% endfor %}
+                    <a href="{% url 'MyBites:add_to_wishlist' product.id %}" class="text-blue-500">Add to MyBites</a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 {% endblock content %}
