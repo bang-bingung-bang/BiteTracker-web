@@ -9,24 +9,25 @@
 {% include 'navbar.html' %}
 
 <body>
-    <div class="hero-text custom-hero">
-        <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -100%); color: black;">Product List</h1>
+    <div class="hero-text">
+        <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -120%); color: black;">Product List</h1>
     </div>
     <div class="mt-80 text-center">
-        <a href="{% url 'MyBites:wishlist' %}" class="text-blue-500 mx-5 my-5">What's in MyBites?</a>
+        <a href="{% url 'MyBites:wishlist' %}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white mx-5 my-5">What's in MyBites?</a>
         
         <div class="product-grid grid grid-cols-3 gap-4">
             {% for product in products %}
-                <div class="product py-4 border p-4 rounded mx-5 my-5">
-                    <h2 class="py-1 text-lg">{{ product.nama_product }}</h2>
-                    <p>Store: {{ product.nama_toko_lokasi }}</p>
-                    <p>Price: {{ product.harga }}</p>
-                    <p>Description: {{ product.deskripsi }}</p>
-                    <p>Sugar Tag: {{ product.tag_gula }}</p>
-                    <p>Vegan Tag: {{ product.tag_vegan }}</p>
-                    <p>Calory Tag: {{ product.tag_kalori }}</p>
-
-                    <a href="{% url 'MyBites:add_to_wishlist' product.id %}" class="text-blue-500">Add to MyBites</a>
+                <div class="product py-4 border p-4 rounded mx-5 my-5 bg-gray-100">
+                    <h2 class="py-1 text-lg font-bold">{{ product.nama_product }}</h2>
+                    <p class=" text-left">Store: {{ product.nama_toko_lokasi }}</p>
+                    <p class=" text-left">Price: Rp. {{ product.harga }}</p>
+                    <p class=" text-left">Description: {{ product.deskripsi }}</p>
+                    <p class=" text-left">Sugar Tag: {{ product.tag_gula }}</p>
+                    <p class=" text-left">Vegan Tag: {{ product.tag_vegan }}</p>
+                    <p class=" text-left">Calory Tag: {{ product.tag_kalori }}</p>
+                    <div class="my-5">
+                        <a href="{% url 'MyBites:add_to_wishlist' product.id %}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Add to MyBites</a>
+                    </div>
                 </div>
             {% endfor %}
         </div>
