@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<title>Create a Post</title>
+{% endblock meta %}
+
+{% block content %}
+<style>
+  /* Mengubah warna fokus untuk input dan textarea */
+  input:focus, textarea:focus, select:focus {
+      outline: none; /* Menghilangkan outline default */
+      border-color: #533A2E; /* Warna border saat fokus */
+      box-shadow: 0 0 5px rgba(83, 58, 46, 0.5); /* Tambahkan shadow untuk efek */
+  }
+</style>
+
+<div class="flex flex-col min-h-screen bg-white">
+  <div class="container mx-auto px-4 py-8 mt-16 max-w-xl">
+    <h1 class="text-3xl font-bold text-center mb-8 text-black">Create Your Post 🍪</h1>
+    
+    <div class="bg-white shadow-md rounded-lg p-6" style="border: 2px solid #533A2E;">
+      <form method="POST" class="space-y-6">
+        {% csrf_token %}
+        
+        <div class="flex flex-col">
+          <label for="title" class="mb-2 font-semibold text-gray-700">Title:</label>
+          <input type="text" id="title" name="title" required class="border rounded-lg p-2" placeholder="Enter title">
+        </div>
+
+        <div class="flex flex-col">
+          <label for="content" class="mb-2 font-semibold text-gray-700">Description:</label>
+          <textarea id="content" name="content" rows="4" required class="border rounded-lg p-2" placeholder="Write your description..."></textarea>
+        </div>
+
+        <div class="flex flex-col">
+          <label for="image" class="mb-2 font-semibold text-gray-700">Image URL:</label>
+          <input type="text" id="image" name="image" required class="border rounded-lg p-2" placeholder="Enter image URL">
+        </div>
+
+        <div class="flex flex-col">
+          <label for="calorie_content" class="mb-2 font-semibold text-gray-700">Calorie Content:</label>
+          <select id="calorie_content" name="calorie_content" required class="border rounded-lg p-2">
+            <option value="none">None</option>
+            <option value="low">Low Calorie</option>
+            <option value="high">High Calorie</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col">
+          <label for="sugar_content" class="mb-2 font-semibold text-gray-700">Sugar Content:</label>
+          <select id="sugar_content" name="sugar_content" required class="border rounded-lg p-2">
+            <option value="none">None</option>
+            <option value="low">Low Sugar</option>
+            <option value="high">High Sugar</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col">
+          <label for="diet_type" class="mb-2 font-semibold text-gray-700">Diet Type:</label>
+          <select id="diet_type" name="diet_type" required class="border rounded-lg p-2">
+            <option value="none">None</option>
+            <option value="vegan">Vegan</option>
+            <option value="non-vegan">Non-Vegan</option>
+          </select>
+        </div>
+
+        <div class="flex justify-center mt-6">
+            <button type="submit" 
+                    style="background-color: #CCBFB0; color: white; font-weight: 600; padding: 12px 24px; border-radius: 0.375rem; transition: background-color 0.3s ease-in-out; width: 100%;"
+                    onmouseover="this.style.backgroundColor='#533A2E';" 
+                    onmouseout="this.style.backgroundColor='#CCBFB0';">
+                Create Post
+            </button>
+        </div>
+
+        <div class="flex justify-center mt-4">
+            <div class="w-full">
+                <a href="{% url 'sharebites:show_main' %}" class="bg-gray-300 text-700 font-semibold px-6 py-3 rounded-lg hover:bg-gray-500 transition duration-300 ease-in-out w-full text-center block">
+                    Back
+                </a>
+            </div>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}
