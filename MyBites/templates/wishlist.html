@@ -8,8 +8,8 @@
 {% block content %}
 {% include 'navbar.html' %}
 
-<div class="hero-text custom-hero">
-    <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -180%); color: black;">MyBites!</h1>
+<div class="hero-text">
+    <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -200%); color: black;">MyBites!</h1>
 </div>
 
 <div class="mt-60 text-center">
@@ -17,20 +17,24 @@
         <p>{{ message }}</p>
     {% else %}
         <div class="py-4">
-            <a class="pr-4 rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-700 hover:text-white" href="{% url 'main:show_main'%} ">Back to main page</a>
-            <a href="{% url 'MyBites:product_list'%}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Back to product list</a>
+            <a class="pr-4 rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white" href="{% url 'main:show_main'%} ">Back to main page</a>
+            <a href="{% url 'MyBites:product_list'%}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Back to product list</a>
         </div>
         <ul>
             <div class="item-grid grid grid-cols-3 gap-4">
                 {% for item in wishlist_items %}
                     <li>
                         <div class="product py-4 border p-4 rounded mx-5 my-5">
-                            {{ item.product.nama_product }} 
-                            <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="text-blue-500">Remove</a>
+                            <p class="mb-5 text-xl font-bold">{{ item.product.nama_product }}</p>
+                            <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="rounded-md px-3 py-2 text-sm bg-gray-300 font-medium text-gray-900 hover:bg-gray-700 hover:text-white">Remove</a>
                         </div>
                     </li>
                 {% empty %}
-                    <li>MyBites is empty.</li>
+                <div class="lapar-image">
+                    <div class="hero-text custom-hero">
+                        <h3 class="mb-5 text-xl font-bold text-center">MyBites is empty.</h3>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </ul>
