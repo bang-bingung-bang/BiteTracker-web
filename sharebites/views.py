@@ -2,11 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import ShareBites, Comment, Like
 from .forms import ShareBitesForm, CommentForm
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 
-# @login_required
+@login_required
 def show_main(request):
     posts = ShareBites.objects.all()
     liked_status = {}
@@ -22,7 +20,7 @@ def show_main(request):
     }
     return render(request, 'sharebites.html', {'posts': posts})
 
-# @login_required
+@login_required
 def create_post(request):
     if request.method == 'POST':
         form = ShareBitesForm(request.POST)
@@ -58,13 +56,15 @@ def create_post(request):
     
     return render(request, 'create_post_sharebites.html', {'form': form})
 
+
+@login_required
 def delete_post(request, pk):
     post = get_object_or_404(ShareBites, pk=pk)
     if post.user == request.user:
         post.delete()
     return redirect('sharebites:show_main')
 
-# @login_required
+@login_required
 def add_comment(request, post_id):
     post = get_object_or_404(ShareBites, id=post_id)
     if request.method == 'POST':
@@ -80,7 +80,7 @@ def add_comment(request, post_id):
 
     return render(request, 'sharebites.html', {'form': form, 'post': post})
 
-# @login_required
+@login_required
 def like_post(request, post_id):
     post = get_object_or_404(ShareBites, id=post_id)
     like, created = Like.objects.get_or_create(post=post, user=request.user)
@@ -98,5 +98,3 @@ def like_post(request, post_id):
         return JsonResponse(response_data)
 
     return redirect('sharebites:show_main')
-
-
