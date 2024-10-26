@@ -1,0 +1,19 @@
+<h2>Your Wishlist</h2>
+{% if message %}
+    <p>{{ message }}</p>
+{% else %}
+    <li>
+        <a href="{% url 'MyBites:show_main'%}">Back to main page</a>
+        <a href="{% url 'MyBites:product_list'%}">Back to product list</a>
+    </li>
+    <ul>
+        {% for item in wishlist_items %}
+            <li>
+                {{ item.product.nama_product }} 
+                <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}">Remove</a>
+            </li>
+        {% empty %}
+            <li>Your wishlist is empty.</li>
+        {% endfor %}
+    </ul>
+{% endif %}

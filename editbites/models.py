@@ -32,7 +32,7 @@ class Product(models.Model):
     calorie_tag = models.CharField(max_length=4, choices=CALORIE_CHOICES)
     vegan_tag = models.CharField(max_length=9, choices=VEGAN_CHOICES)
     sugar_tag = models.CharField(max_length=4, choices=SUGAR_CHOICES)
-    image = models.URLField(max_length=500, blank=True, null=True)
+    image = models.URLField(max_length=500, default="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

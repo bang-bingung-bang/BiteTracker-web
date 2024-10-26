@@ -1,56 +1,163 @@
+<!-- editbites/templates/editbites/product_form.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="mb-0">{{ action }} Produk</h2>
-                </div>
-                <div class="card-body">
-                    <form method="post">
-                        {% csrf_token %}
-                        
-                        {% for field in form %}
-                        <div class="mb-3">
-                            <label for="{{ field.id_for_label }}" class="form-label">
-                                {{ field.label }}
-                            </label>
-                            {{ field.errors }}
-                            {% if field.name == "description" %}
-                                <textarea name="{{ field.name }}" 
-                                          class="form-control" 
-                                          rows="3">{{ field.value|default:'' }}</textarea>
-                            {% elif field.name == "image" %}
-                                {{ field }}
-                                {% if form.instance.image %}
-                                    <div class="mt-2">
-                                        <img src="{{ form.instance.get_image_url }}" alt="Current image" 
-                                             style="max-width: 200px; border-radius: 4px;">
-                                    </div>
-                                {% endif %}
-                            {% else %}
-                                {{ field }}
-                            {% endif %}
-                            {% if field.help_text %}
-                                <small class="form-text text-muted">{{ field.help_text }}</small>
-                            {% endif %}
-                        </div>
-                        {% endfor %}
-                        
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Simpan
-                            </button>
-                            <a href="{% url 'editbites:admin_dashboard' %}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> Kembali
-                            </a>
-                        </div>
-                    </form>
-                </div>
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold mb-6">{{ action }} Product</h1>
+
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            
+            <!-- Store Field -->
+            <div class="space-y-2">
+                <label for="{{ form.store.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Store Location
+                </label>
+                <select name="{{ form.store.name }}" id="{{ form.store.id_for_label }}"
+                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    <option value="">Select a store</option>
+                    {% for value, label in form.store.field.choices %}
+                    <option value="{{ value }}" {% if form.store.value == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                    {% endfor %}
+                </select>
+                {% if form.store.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.store.errors.0 }}</p>
+                {% endif %}
             </div>
-        </div>
+
+            <!-- Name Field -->
+            <div class="space-y-2">
+                <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Product Name
+                </label>
+                <input type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}"
+                       value="{{ form.name.value|default:'' }}"
+                       class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                {% if form.name.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Price Field -->
+            <div class="space-y-2">
+                <label for="{{ form.price.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Price (Rp)
+                </label>
+                <input type="number" name="{{ form.price.name }}" id="{{ form.price.id_for_label }}"
+                       value="{{ form.price.value|default:'' }}"
+                       class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                {% if form.price.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.price.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Description Field -->
+            <div class="space-y-2">
+                <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Description
+                </label>
+                <textarea name="{{ form.description.name }}" id="{{ form.description.id_for_label }}"
+                          rows="4" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">{{ form.description.value|default:'' }}</textarea>
+                {% if form.description.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.description.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Calories Field -->
+            <div class="space-y-2">
+                <label for="{{ form.calories.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Calories
+                </label>
+                <input type="number" name="{{ form.calories.name }}" id="{{ form.calories.id_for_label }}"
+                       value="{{ form.calories.value|default:'' }}"
+                       class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                {% if form.calories.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.calories.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Calorie Tag Field -->
+            <div class="space-y-2">
+                <label for="{{ form.calorie_tag.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Calorie Level
+                </label>
+                <select name="{{ form.calorie_tag.name }}" id="{{ form.calorie_tag.id_for_label }}"
+                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    {% for value, label in form.calorie_tag.field.choices %}
+                    <option value="{{ value }}" {% if form.calorie_tag.value == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                    {% endfor %}
+                </select>
+                {% if form.calorie_tag.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.calorie_tag.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Vegan Tag Field -->
+            <div class="space-y-2">
+                <label for="{{ form.vegan_tag.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Vegan Status
+                </label>
+                <select name="{{ form.vegan_tag.name }}" id="{{ form.vegan_tag.id_for_label }}"
+                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    {% for value, label in form.vegan_tag.field.choices %}
+                    <option value="{{ value }}" {% if form.vegan_tag.value == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                    {% endfor %}
+                </select>
+                {% if form.vegan_tag.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.vegan_tag.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Sugar Tag Field -->
+            <div class="space-y-2">
+                <label for="{{ form.sugar_tag.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Sugar Level
+                </label>
+                <select name="{{ form.sugar_tag.name }}" id="{{ form.sugar_tag.id_for_label }}"
+                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    {% for value, label in form.sugar_tag.field.choices %}
+                    <option value="{{ value }}" {% if form.sugar_tag.value == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                    {% endfor %}
+                </select>
+                {% if form.sugar_tag.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.sugar_tag.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Image URL Field -->
+            <div class="space-y-2">
+                <label for="{{ form.image.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Image URL
+                </label>
+                <input type="url" name="{{ form.image.name }}" id="{{ form.image.id_for_label }}"
+                       value="{{ form.image.value|default:'' }}"
+                       class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                {% if form.image.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.image.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Form Actions -->
+            <div class="flex justify-between pt-4">
+                <a href="{% url 'editbites:product_list' %}"
+                   class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Cancel
+                </a>
+                <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    {{ action }} Product
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
