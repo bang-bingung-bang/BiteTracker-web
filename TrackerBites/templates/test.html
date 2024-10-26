@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Kalori Tracker</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .caltrack-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            width: 300px;
+        }
+
+        .caltrack-circular-progress {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto; /* Centering the circular progress */
+        }
+
+        .caltrack-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            gap: 10px; /* Adding space between items */
+        }
+
+        .caltrack-details-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .caltrack-details-icon {
+            margin-right: 10px;
+        }
+
+        .caltrack-details-text {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .caltrack-percentage-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #3b82f6; /* Text color for the percentage */
+        }
+
+        .caltrack-text-container {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px; /* Adding space between progress and text */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="caltrack-card">
+        <div class="text-2xl font-bold mb-2">Calorie Tracker</div>
+        <div class="caltrack-circular-progress">
+            <!-- Circular Progress -->
+            <svg class="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Circle -->
+                <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200" stroke-width="2"></circle>
+                <!-- Progress Circle -->
+                <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-blue-600" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="75" stroke-linecap="round"></circle>
+            </svg>
+            <!-- Percentage Text -->
+            <div class="caltrack-percentage-text">650</div>
+        </div>
+        <div class="caltrack-details">
+            <div class="caltrack-details-item">
+                <img src="food-icon.png" alt="Jumlah Makanan" class="caltrack-details-icon w-6 h-6">
+                <div class="caltrack-details-text">Food Consume: 4</div>
+            </div>
+            <div class="caltrack-details-item">
+                <img src="exercise-icon.png" alt="Jumlah Kalori" class="caltrack-details-icon w-6 h-6">
+                <div class="caltrack-details-text">Calorie: 650</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

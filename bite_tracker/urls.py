@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('', include('MyBites.urls', namespace='MyBites')),
+    path('', include('TrackerBites.urls')),
 ]
