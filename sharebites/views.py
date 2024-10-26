@@ -9,14 +9,11 @@ def show_main(request):
     posts = ShareBites.objects.all()
     liked_status = {}
     
-    if request.user.is_authenticated:
-        liked_status = {
-            post.pk: post.likes.filter(user=request.user).exists() for post in posts
-        }
+    liked_posts = Like.objects.filter(user=request.user).values_list('post_id', flat=True)
     
     context = {
         'posts': posts,
-        'liked_status': liked_status,
+        'liked_posts': liked_posts,
     }
     return render(request, 'sharebites.html', {'posts': posts})
 
@@ -27,35 +24,12 @@ def create_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
-
-            # Dapatkan nilai dari dropdown
-            calorie_content = form.cleaned_data.get('calorie_content')
-            sugar_content = form.cleaned_data.get('sugar_content')
-            diet_type = form.cleaned_data.get('diet_type')
-
-            # Simpan hanya jika bukan 'none'
-            if calorie_content != 'none':
-                post.calorie_content = calorie_content
-            else:
-                post.calorie_content = None  # Atau bisa dibiarkan saja jika field nullable
-
-            if sugar_content != 'none':
-                post.sugar_content = sugar_content
-            else:
-                post.sugar_content = None  # Atau bisa dibiarkan saja jika field nullable
-
-            if diet_type != 'none':
-                post.diet_type = diet_type
-            else:
-                post.diet_type = None  # Atau bisa dibiarkan saja jika field nullable
-
             post.save()
             return redirect('sharebites:show_main')
     else:
         form = ShareBitesForm()
     
     return render(request, 'create_post_sharebites.html', {'form': form})
-
 
 @login_required
 def delete_post(request, pk):
@@ -87,9 +61,12 @@ def like_post(request, post_id):
 
     if not created:
         like.delete()  # Unlike the post
+        liked = False
+    else:
+        liked = True
 
     response_data = {
-        'liked': created,  # True if liked, False if unliked
+        'liked': True,  
         'likes_count': post.likes.count()  # Get the updated likes count
     }
 

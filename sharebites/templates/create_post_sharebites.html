@@ -5,6 +5,7 @@
 {% endblock meta %}
 
 {% block content %}
+{% include 'navbar.html' %}
 <style>
   /* Mengubah warna fokus untuk input dan textarea */
   input:focus, textarea:focus, select:focus {
@@ -40,7 +41,6 @@
         <div class="flex flex-col">
           <label for="calorie_content" class="mb-2 font-semibold text-gray-700">Calorie Content:</label>
           <select id="calorie_content" name="calorie_content" required class="border rounded-lg p-2">
-            <option value="none">None</option>
             <option value="low">Low Calorie</option>
             <option value="high">High Calorie</option>
           </select>
@@ -49,7 +49,6 @@
         <div class="flex flex-col">
           <label for="sugar_content" class="mb-2 font-semibold text-gray-700">Sugar Content:</label>
           <select id="sugar_content" name="sugar_content" required class="border rounded-lg p-2">
-            <option value="none">None</option>
             <option value="low">Low Sugar</option>
             <option value="high">High Sugar</option>
           </select>
@@ -58,7 +57,6 @@
         <div class="flex flex-col">
           <label for="diet_type" class="mb-2 font-semibold text-gray-700">Diet Type:</label>
           <select id="diet_type" name="diet_type" required class="border rounded-lg p-2">
-            <option value="none">None</option>
             <option value="vegan">Vegan</option>
             <option value="non-vegan">Non-Vegan</option>
           </select>
@@ -85,4 +83,4 @@
     
   </div>
 </div>
-{% endblock %}
+{% endblock content %}
