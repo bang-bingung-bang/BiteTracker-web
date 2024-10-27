@@ -2,33 +2,71 @@
 {% load static %}
 {% block meta %}
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
+<script>
+    function scrollToSection() {
+        const target = document.getElementById('content-section');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+</script>
 {% endblock meta %}
 
 {% block content %}
 {% include 'navbar.html' %}
-<div class="overflow-x-hidden">
-    <div class="hero-image">
-        <div class="hero-text">
-            <h1>Bite</h1>
-            <h1>Tracker</h1>
-            <h2>Track Your Bites, Tailor Your Eats!</h2>
+<div style="background-color: white; min-height: 100vh; display: flex; flex-direction: column;">
+    <div class="overflow-x-hidden">
+        <div class="hero-image" style="position: relative;">
+            <div class="hero-text">
+                <h1>Bite</h1>
+                <h1>Tracker</h1>
+                <h2>Track Your Bites, Tailor Your Eats!</h2>
+            </div>
+            <!-- Downward pointing "V" Arrow -->
+            <div onclick="scrollToSection()" 
+                style="cursor: pointer; position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);">
+                <div style="width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid black;"></div>
+            </div>
         </div>
     </div>
-</div>
-<div class="container mx-auto">
-    <div class="flex flex-wrap">
-        <div class="w-full md:w-1/2 p-4">
-            <h2 class="text-2xl font-bold">What is Bite Tracker?</h2>
-            <p class="text-lg">Bite Tracker is a simple web application that allows you to track your daily food intake. You can
+
+    <div id="content-section" style="display: flex; flex-wrap: wrap; background-color: white; padding: 24px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 8px; margin-top: 24px;">
+        <div style="flex: 1; padding: 16px;">
+            <h2 style="font-size: 24px; font-weight: bold; color: #000000; margin-bottom: 8px;">What is Bite Tracker?</h2>
+            <p style="font-size: 18px; color: #000000; text-align: justify;">Bite Tracker is a simple web application that allows you to track your daily food intake. You can
                 input the food you eat and the application will calculate the total calories you consume. You can also set a
-                daily calorie goal and the application will tell you if you have reached your goal or not.</p>
+                daily calorie goal, and the application will tell you if you have reached your goal or not.</p>
         </div>
-        <div class="w-full md:w-1/2 p-4">
-            <h2 class="text-2xl font-bold">How to use Bite Tracker?</h2>
-            <p class="text-lg">To use Bite Tracker, you need to create an account. Once you have an account, you can log in and start
-                tracking your food intake. You can add food items to your daily log and the application will calculate the total
-                calories you consume. You can also set a daily calorie goal and the application will tell you if you have reached
+        <div style="flex: 1; padding: 16px;">
+            <h2 style="font-size: 24px; font-weight: bold; color: #000000; margin-bottom: 8px;">How to use Bite Tracker?</h2>
+            <p style="font-size: 18px; color: #000000; text-align: justify;">To use Bite Tracker, you need to create an account. Once you have an account, you can log in and start
+                tracking your food intake. You can add food items to your daily log, and the application will calculate the total
+                calories you consume. You can also set a daily calorie goal, and the application will tell you if you have reached
                 your goal or not.</p>
         </div>
     </div>
+
+    <footer class="bg-black text-white p-8">
+        <div class="flex justify-center">
+            <div class="w-1/2 text-left pr-4 ml-20">
+                <p class="text-4xl font-bold">WELCOME</p>
+                <p class="text-4xl font-bold">to OUR SITE!</p>
+            </div>
+            <div class="w-1/2 text-left pl-4">
+                <p class="text-3xl font-bold">Sign Up Now to Explore</p>
+                <p class="text-3xl font-bold">Track, and Eat Right!</p>
+                <br>
+                <a href="/login" 
+                    style="display: inline-block; padding: 10px 20px; background-color: white; color: black; text-align: center; text-decoration: none; 
+                            border: none; font-size: 1.2em; font-weight: bold; 
+                            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; 
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-top: 10px; cursor: pointer;"
+                    onmouseover="this.style.boxShadow='0 8px 12px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(-4px)';" 
+                    onmouseout="this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.transform='translateY(0)';">
+                        JOIN US >
+                </a>
+            </div>        
+        </div>
+    </footer>
+</div>
 {% endblock content %}
