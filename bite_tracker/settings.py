@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'main',
     'MyBites',
     'TrackerBites'
+    'editbites',
+    'sharebites',
 ]
 
 

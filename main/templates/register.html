@@ -5,28 +5,58 @@
 {% endblock meta %}
 
 {% block content %}
+<div class="hero-image flex justify-center items-center min-h-screen bg-cover">
+    <div class="register bg-white bg-opacity-40 p-8 rounded-lg shadow-md w-full max-w-xl">
+        <h1 class="font-bold text-3xl mb-4 text-center">Register</h1>
+        <p class="text-center text-gray-700">Create an account to get started with BiteTracker!</p>
 
-<div class="login">
-  <h1>Register</h1>
+        <form method="POST" class="mt-6 space-y-6">
+            {% csrf_token %}
 
-  <form method="POST">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input type="submit" name="submit" value="Daftar" /></td>
-      </tr>
-    </table>
-  </form>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="flex flex-col">
+                    <label for="id_username" class="text-gray-700 font-medium">Username</label>
+                    {{ form.username }}
+                </div>
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+                <div class="flex flex-col">
+                    <label for="id_role" class="text-gray-700 font-medium">Role</label>
+                    {{ form.role }}
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="id_password1" class="text-gray-700 font-medium">Password</label>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="id_password2" class="text-gray-700 font-medium">Password confirmation</label>
+                    {{ form.password2 }}
+                </div>
+
+                <div class="flex flex-col col-span-2">
+                    <label for="id_email" class="text-gray-700 font-medium">Email</label>
+                    {{ form.email }}
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-6">
+                <input class="btn register_btn py-2 px-6 rounded bg-black text-white font-bold cursor-pointer shadow-lg hover:shadow-md transform hover:-translate-y-1 transition" type="submit" name="submit" value="Register">
+            </div>
+        </form>
+
+        {% if messages %}
+        <ul class="list-none text-center mt-4">
+            {% for message in messages %}
+            <li class="text-red-500">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <p class="text-center text-sm text-gray-700 mt-6">
+            Already have an account? 
+            <a href="{% url 'main:login' %}" class="text-blue-600 underline">Log In</a>
+        </p>
+    </div>
 </div>
-
 {% endblock content %}

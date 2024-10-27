@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<title>ShareBites</title>
+{% endblock meta %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<style>
+    textarea:focus {
+        outline: none;
+        border-color: #533A2E; /* Warna border saat fokus */
+        box-shadow: 0 0 5px rgba(83, 58, 46, 0.5); /* Menambahkan efek shadow */
+    }
+</style>
+
+<body style="font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #FFFFFF; color: #000000;">
+    <main style="padding: 80px;">
+        <section>
+            <div style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px;">
+                <h1 style="color: #000000; font-size: 2.5em;">All Posts</h1>
+                <p style="font-size: 1.2em; margin-top: 10px; margin-bottom: 10px;">Calling all BiteTracker fellows! Show off your favorite eats and inspire others with your delicious finds! 🍽️</p>                <a href="{% url 'sharebites:create_post_sharebites' %}" 
+                    style="display: inline-block; padding: 10px 20px; background-color: #533A2E; color: #FFFFFF; text-align: center; text-decoration: none; border-radius: 20px; font-size: 1.2em; 
+                            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; margin-top: 10px; 
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-weight: 600;"
+                    onmouseover="this.style.boxShadow='0 8px 12px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(-4px)';" 
+                    onmouseout="this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.transform='translateY(0)';">
+                        Add Yours
+                </a>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                {% for post in posts %}
+                    <div style="display: flex; border: 1px solid #533A2E; border-radius: 8px; overflow: hidden; background-color: #FFFFFF; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s; cursor: pointer;">
+                        <img src="{{ post.image }}" alt="{{ post.title }}" class="post-image" style="width: 350px; height: auto; border-radius: 8px 0 0 8px; object-fit: cover;" onclick="openLightbox('{{ post.image }}')">
+                        
+                        <div style="padding: 15px; display: flex; flex-direction: column; flex: 1;">
+                            <div style="display: flex; align-items: center;">
+                                <h2 style="margin: 0; font-size: 1.5em; color: #000000; text-align:left;">{{ post.title }}</h2>
+                                
+                                <!-- Tombol Delete Post -->
+                                <form action="{% url 'sharebites:delete_post' post.pk %}" method="post" style="margin-left: 10px;">
+                                    {% csrf_token %}
+                                    <button type="submit" 
+                                            style="background-color: #FF0000; color: white; font-weight: 600; padding: 3px 6px; border: none; border-radius: 0.375rem; transition: background-color 0.3s ease-in-out; font-size: 0.8em;"
+                                            onmouseout="this.style.backgroundColor='#CCBFB0';">
+                                        Delete Post
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Tags Section -->
+                            <div style="margin-top: 13px;">
+                                {% if post.calorie_content == 'low' %}
+                                    <span style="display: inline-block; padding: 5px 10px; margin: 2px; border-radius: 12px; background-color: #ECC424; color: #FFFFFF; font-size: 0.85em; font-weight: bold;">Low Calorie</span>
+                                {% elif post.calorie_content == 'high' %}
+                                    <span style="display: inline-block; padding: 5px 10px; margin: 2px; border-radius: 12px; background-color: #E0191C; color: #FFFFFF; font-size: 0.85em; font-weight: bold;">High Calorie</span>
+                                {% endif %}
+                                
+                                {% if post.sugar_content == 'low' %}
+                                    <span style="display: inline-block; padding: 5px 10px; margin: 2px; border-radius: 12px; background-color: #16B8E1; color: #FFFFFF; font-size: 0.85em; font-weight: bold;">Low Sugar</span>
+                                {% elif post.sugar_content == 'high' %}
+                                    <span style="display: inline-block; padding: 5px 10px; margin: 2px; border-radius: 12px; background-color: #2424EC; color: #FFFFFF; font-size: 0.85em; font-weight: bold;">High Sugar</span>
+                                {% endif %}
+                                
+                                {% if post.diet_type == 'vegan' %}
+                                    <span style="display: inline-block; padding: 5px 10px; margin: 2px; border-radius: 12px; background-color: #259B21; color: #FFFFFF; font-size: 0.85em; font-weight: bold;">Vegan</span>
+                                {% elif post.diet_type == 'non-vegan' %}
+                                    <span style="display: inline-block; padding: 5px 10px; margin: 2px; border-radius: 12px; background-color: #55F050; color: #000000; font-size: 0.85em; font-weight: bold;">Non-Vegan</span>
+                                {% endif %}
+                            </div>
+                            
+                            <div style="margin-top: 10px; margin-bottom: 10px;"> 
+                                <p style="margin: 5px 0; color: #000000; text-align: justify;">{{ post.content }}</p>
+                            </div>
+
+                            <p style="margin: 5px 0; color: #666058; font-size: 0.9em;">Posted by: {{ post.user.username }}</p>
+                            <p style="margin: 5px 0; color: #666058; font-size: 0.9em;">Created at: {{ post.created_at }}</p>
+                            
+                            <hr style="border: 1px light #000000; margin: 25px 0; width: 98%;">
+
+                            <!-- Likes Count and Comments Title Section -->
+                            <div style="margin-top: 10px; display: flex; align-items: center; justify-content: space-between;">
+                                <h3 style="font-size: 1.2em; margin: 0; color: #000000;">Comments:</h3>
+                                <div style="display: flex; align-items: center;">
+                                    <a href="{% url 'sharebites:like_post' post.pk %}" 
+                                        class="like-button" 
+                                        data-post-id="{{ post.id }}"  
+                                        style="display: flex; align-items: center;">
+                                        <svg 
+                                            xmlns="http://www.w3.org/2000/svg" 
+                                            viewBox="0 0 24 24" 
+                                            fill="{% if post.id in liked_posts %}red{% else %}white{% endif %}"  
+                                            stroke="red" 
+                                            style="width: 25px; height: 25px; stroke-width: 1;">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    </a>
+                                    <span style="margin-left: 10px; font-size: 1.1em; color: #000000;">{{ post.likes.count }}</span>
+                                </div>
+                                
+                            </div>
+
+                            <!-- Comments Section -->
+                            <div style="margin-top: 15px;">
+                                {% for comment in post.comments.all %}
+                                    <div style="margin-bottom: 5px;">
+                                        <strong style="color: #000000;">{{ comment.user.username }}</strong>: <span style="color: #666058;">{{ comment.content }}</span>
+                                    </div>
+                                {% empty %}
+                                    <p style="color: #999;">No comments yet.</p>
+                                {% endfor %}
+                                
+                                <form action="{% url 'sharebites:add_comment' post.pk %}" method="post" style="margin-top: 10px;">
+                                    {% csrf_token %}
+                                    <textarea name="content" rows="3" placeholder="Type a comment..." required style="width: 99%; padding: 10px; border: 1px solid #000000; border-radius: 5px; margin-top: 5px; color: #000000;"></textarea>
+                                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                                        <button type="submit" 
+                                                style="background-color: #CCBFB0; color: white; font-weight: 600; padding: 12px 24px; border: none; border-radius: 0.375rem; transition: background-color 0.3s ease-in-out; width: 100%;"
+                                                onmouseover="this.style.backgroundColor='#533A2E';" 
+                                                onmouseout="this.style.backgroundColor='#CCBFB0';">
+                                            Post Comment
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 50vh;">
+                        <img src="{% static 'images/post.jpg' %}" alt="Empty Post" class="w-32 h-32 mb-2"/>
+                        <p style="color: #666058; text-align: center; margin-top: 10px;">No posts available!</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+
+<!-- Lightbox for image display -->
+<div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+    <img id="lightbox-img" src="" alt="Lightbox Image" style="max-width: 90%; max-height: 90%; border-radius: 8px;">
+    <span id="close-lightbox" style="position: absolute; top: 20px; right: 20px; color: #ffffff; font-size: 30px; cursor: pointer;">&times;</span>
+</div>
+
+<!-- Script AJAX like button -->
+<script>
+    // JavaScript for handling the like button
+    document.querySelectorAll('.like-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default action
+
+            const postId = this.getAttribute('data-post-id');
+            const icon = this.querySelector('svg');
+
+            // Make AJAX request to like/unlike the post
+            fetch(`{% url 'sharebites:like_post' '0' %}`.replace('0', postId), {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the icon fill based on the liked state
+                if (data.liked) {
+                    icon.setAttribute('fill', 'red'); // Change fill to red
+                } else {
+                    icon.setAttribute('fill', 'white'); // Change fill to white
+                }
+
+                // Update the likes count
+                const likesCount = this.nextElementSibling;
+                likesCount.textContent = data.likes_count;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
+
+<!-- script lightbox for image display-->
+<script>
+    // Function to open the lightbox
+    function openLightbox(imageSrc) {
+        var lightbox = document.getElementById("lightbox");
+        var lightboxImg = document.getElementById("lightbox-img");
+        lightbox.style.display = "flex";
+        lightboxImg.src = imageSrc;
+    }
+
+    // Function to close the lightbox
+    function closeLightbox() {
+        var lightbox = document.getElementById("lightbox");
+        lightbox.style.display = "none";
+    }
+
+    // Close lightbox when clicking outside of the image
+    window.onclick = function(event) {
+        var lightbox = document.getElementById("lightbox");
+        if (event.target == lightbox) {
+            closeLightbox();
+        }
+    }
+</script>
+{% endblock content %}
