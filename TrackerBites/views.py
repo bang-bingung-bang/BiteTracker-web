@@ -58,7 +58,7 @@ def add_bite_calorie_entry_ajax(request):
 
 def delete_bite_entry_ajax(request, id):
     bite = BiteTrackerModel.objects.get(pk=id, user=request.user)
-    if not bite.exists():
+    if not bite:
         return HttpResponse({'success': False, 'error': 'Bite not found'}, status=404)
     bite.delete()
 
