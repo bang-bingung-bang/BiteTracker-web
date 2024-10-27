@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block meta %}
 <title>Register</title>
 {% endblock meta %}
@@ -7,7 +7,10 @@
 {% block content %}
 <div class="hero-image flex justify-center items-center min-h-screen bg-cover">
     <div class="register bg-white bg-opacity-40 p-8 rounded-lg shadow-md w-full max-w-xl">
-        <h1 class="font-bold text-3xl mb-4 text-center">Register</h1>
+        <h1 style="font-weight: bold; font-size: 2.7em; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;">
+            Register
+            <img src="{% static 'images/logo2.png' %}" alt="Logo" style="height: 80px; margin-left: 3px;">
+        </h1>
         <p class="text-center text-gray-700">Create an account to get started with BiteTracker!</p>
 
         <form method="POST" class="mt-6 space-y-6">
