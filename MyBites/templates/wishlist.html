@@ -32,12 +32,15 @@
             {% for item in wishlist_items %}
                 <li>
                     <div class="product bg-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-300 rounded-lg p-6">
-                        <p class="mb-5 text-xl font-extrabold text-black uppercase tracking-wide">{{ item.product.nama_product }}</p>
-
+                        <p class="mb-5 text-xl font-extrabold text-black uppercase tracking-wide">{{ item.product.name }}</p>
+                        
+                        <img src="{{ item.product.get_image_url }}" alt="{{ item.product.name }}" class="w-full h-auto mb-4 rounded-md shadow-lg">
+                    
                         <a href="{% url 'MyBites:remove_from_wishlist' item.product.id %}" class="block rounded-md px-4 py-2 text-sm bg-red-400 font-bold text-white hover:bg-red-700 hover:text-white transition-colors duration-300 text-center">
                             Remove
                         </a>
                     </div>
+                    
                 </li>
             {% empty %}
             <div class="lapar-image col-span-full text-center">
