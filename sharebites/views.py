@@ -50,11 +50,19 @@ def add_comment(request, post_id):
             comment.post = post
             comment.user = request.user
             comment.save()
-            return redirect('sharebites:show_main')  # Redirect to the post detail view or wherever you want
-    else:
-        form = CommentForm()
-
-    return render(request, 'sharebites.html', {'form': form, 'post': post})
+            # Return JSON response
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                response_data = {
+                    'success': True,
+                    'comment': {
+                        'username': comment.user.username,
+                        'content': comment.content
+                    }
+                }
+                return JsonResponse(response_data)
+            return redirect('sharebites:show_main')  # Redirect for normal requests
+    # Return errors if not valid
+    return JsonResponse({'success': False, 'errors': form.errors})
 
 @login_required
 def like_post(request, post_id):

@@ -132,6 +132,27 @@ class ShareBitesViewTest(TestCase):
         })
         self.assertEqual(response.status_code, 302)  # Redirect after success
         self.assertTrue(Comment.objects.filter(content='This is a new comment.').exists())
+    
+    # Test that a new comment can be created via AJAX.
+    def test_ajax_add_comment_view(self):
+        comment_data = {'content': 'This is a new AJAX comment.'}
+        response = self.client.post(
+            reverse('sharebites:add_comment', args=[self.post.pk]),
+            data=comment_data,
+            HTTP_X_REQUESTED_WITH='XMLHttpRequest'
+        )
+
+        self.assertEqual(response.status_code, 200)  # Cek respons sukses
+        self.assertJSONEqual(response.content, {
+            'success': True,
+            'comment': {
+                'username': self.user.username,
+                'content': 'This is a new AJAX comment.'
+            }
+        })
+
+        # Periksa apakah komentar ditambahkan ke dalam database
+        self.assertTrue(Comment.objects.filter(content='This is a new AJAX comment.').exists())
 
     # Test that a new like can be created.
     def test_like_post_view(self):

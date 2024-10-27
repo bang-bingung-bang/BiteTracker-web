@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block meta %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>ShareBites</title>
 {% endblock meta %}
 
@@ -15,16 +16,17 @@
 </style>
 
 <body style="font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #FFFFFF; color: #000000;">
-    <main style="padding: 80px;">
+    <main style="padding: 50px;">
         <section>
             <div style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px;">
-                <h1 style="color: #000000; font-size: 2.5em;">All Posts</h1>
-                <p style="font-size: 1.2em; margin-top: 10px; margin-bottom: 10px;">Calling all BiteTracker fellows! Show off your favorite eats and inspire others with your delicious finds! 🍽️</p>                <a href="{% url 'sharebites:create_post_sharebites' %}" 
+                <h1 style="color: #000000; font-size: 2.5em; font-weight: 700;">ShareBites</h1>
+                <p style="font-size: 1.2em; margin-top: 10px; margin-bottom: 10px;">Calling all BiteTracker fellows! Show off your favorite eats and inspire others with your delicious finds! 🍽️</p>                
+                <a href="{% url 'sharebites:create_post_sharebites' %}" 
                     style="display: inline-block; padding: 10px 20px; background-color: #533A2E; color: #FFFFFF; text-align: center; text-decoration: none; border-radius: 20px; font-size: 1.2em; 
                             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; margin-top: 10px; 
                             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-weight: 600;"
-                    onmouseover="this.style.boxShadow='0 8px 12px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(-4px)';" 
-                    onmouseout="this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.transform='translateY(0)';">
+                            onmouseover="this.style.boxShadow='0 8px 12px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(-4px)';" 
+                            onmouseout="this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.transform='translateY(0)';">
                         Add Yours
                 </a>
             </div>
@@ -102,16 +104,18 @@
                             </div>
 
                             <!-- Comments Section -->
-                            <div style="margin-top: 15px;">
-                                {% for comment in post.comments.all %}
-                                    <div style="margin-bottom: 5px;">
-                                        <strong style="color: #000000;">{{ comment.user.username }}</strong>: <span style="color: #666058;">{{ comment.content }}</span>
-                                    </div>
-                                {% empty %}
-                                    <p style="color: #999;">No comments yet.</p>
-                                {% endfor %}
-                                
-                                <form action="{% url 'sharebites:add_comment' post.pk %}" method="post" style="margin-top: 10px;">
+                            <div class="post" data-post-id="{{ post.pk }}">
+                                <!-- Konten postingan -->
+                                <div class="comments-section" data-post-id="{{ post.pk }}">
+                                    {% for comment in post.comments.all %}
+                                        <div style="margin-bottom: 5px;">
+                                            <strong style="color: #000000;">{{ comment.user.username }}</strong>: <span style="color: #666058;">{{ comment.content }}</span>
+                                        </div>
+                                    {% empty %}
+                                        <p style="color: #999;">No comments yet.</p>
+                                    {% endfor %}
+                                </div>
+                                <form id="comment-form-{{ post.pk }}" data-post-id="{{ post.pk }}">
                                     {% csrf_token %}
                                     <textarea name="content" rows="3" placeholder="Type a comment..." required style="width: 99%; padding: 10px; border: 1px solid #000000; border-radius: 5px; margin-top: 5px; color: #000000;"></textarea>
                                     <div style="display: flex; gap: 10px; margin-top: 5px;">
@@ -123,7 +127,7 @@
                                         </button>
                                     </div>
                                 </form>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 {% empty %}
@@ -202,5 +206,40 @@
             closeLightbox();
         }
     }
+</script>
+<!-- Script AJAX Comment -->
+<script>
+    document.querySelectorAll('[id^="comment-form-"]').forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Menghentikan pengiriman form default
+
+            const postId = this.getAttribute('data-post-id');
+            const formData = new FormData(this); // Ambil data dari form
+
+            fetch(`{% url 'sharebites:add_comment' '0' %}`.replace('0', postId), {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: formData // Kirim data form
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const commentsSection = document.querySelector(`.comments-section[data-post-id="${postId}"]`);
+                    commentsSection.insertAdjacentHTML('beforeend', 
+                        `<div style="margin-bottom: 5px;">
+                            <strong style="color: #000000;">${data.comment.username}</strong>: <span style="color: #666058;">${data.comment.content}</span>
+                        </div>`
+                    );
+                    this.querySelector('textarea[name="content"]').value = ''; // Kosongkan textarea
+                } else {
+                    alert('Error adding comment: ' + data.errors.content[0]);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
 </script>
 {% endblock content %}
