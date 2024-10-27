@@ -3,12 +3,13 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from .models import Product
 from .forms import ProductForm
-from django.http import JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.core import serializers
 
 def is_admin(user):
     return user.is_staff
 
-@login_required(login_url='main:login')
+@login_required
 def product_list(request):
     filter_param = request.GET.get('filter')
     products = Product.objects.all()
@@ -35,18 +36,10 @@ def product_list(request):
 @login_required
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    
-    # Get previous and next products
-    prev_product = Product.objects.filter(pk__lt=pk).order_by('-pk').first()
-    next_product = Product.objects.filter(pk__gt=pk).order_by('pk').first()
-    
-    context = {
+    return render(request, 'editbites/product_detail.html', {
         'product': product,
-        'prev_product': prev_product,
-        'next_product': next_product,
         'is_admin': request.user.is_staff
-    }
-    return render(request, 'editbites/product_detail.html', context)
+    })
 
 @login_required
 @user_passes_test(is_admin)
@@ -81,35 +74,23 @@ def edit_product(request, pk):
         'action': 'Edit'
     })
 
-# @login_required
-# @user_passes_test(is_admin)
-# def delete_product(request, pk):
-#     product = get_object_or_404(Product, pk=pk)
-#     if request.method == 'POST':
-#         product.delete()
-#         messages.success(request, 'Product deleted successfully!')
-#         return redirect('editbites:product_list')
-#     return render(request, 'editbites/product_confirm_delete.html', {
-#         'product': product
-#     })
-
 @login_required
 @user_passes_test(is_admin)
 def delete_product(request, pk):
-    if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        try:
-            product = get_object_or_404(Product, pk=pk)
-            product.delete()
-            return JsonResponse({
-                'status': 'success',
-                'message': 'Product deleted successfully!'
-            })
-        except Exception as e:
-            return JsonResponse({
-                'status': 'error',
-                'message': str(e)
-            }, status=500)
-    return JsonResponse({
-        'status': 'error',
-        'message': 'Invalid request method'
-    }, status=400)
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.delete()
+        messages.success(request, 'Product deleted successfully!')
+        return redirect('editbites:product_list')
+    return render(request, 'editbites/product_confirm_delete.html', {
+        'product': product
+    })
+
+@login_required
+def get_product_json(request):
+    data = Product.objects.all()
+    
+    if data.exists():
+        return JsonResponse(serializers.serialize("json", data), safe=False)
+    else:
+        return JsonResponse([], safe=False)
