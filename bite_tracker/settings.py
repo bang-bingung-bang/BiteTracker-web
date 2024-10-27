@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'editbites',
     'artibites',
     'main',
     'MyBites',
+    'TrackerBites',
+    'editbites',
+    'sharebites',
 ]
 
 MIDDLEWARE = [
