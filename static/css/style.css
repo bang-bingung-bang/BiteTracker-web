@@ -35,6 +35,14 @@
     color: white;
 }
 
+.hero-text.custom-hero h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 10%;
+    color: black;
+    transform: translate(0%, 500%);
+}
+
 /* Styling for the login container */
 .login {
     background-color: rgba(255, 255, 255, 0.85); /* Slight transparency */
@@ -116,4 +124,17 @@ nav {
     left: 0;
     width: 100%; /* Memastikan lebar navbar mencakup seluruh layar */
     z-index: 1000; /* Menempatkan navbar di atas elemen lainnya */
+}
+
+.lapar-image::before,
+.lapar-image::after{
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/images/sedih.png'); /* Replace with cookie image */
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 80%;
+    left: 42%;
 }

@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import os
 from pathlib import Path
 import os
 
@@ -33,8 +32,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "faiz-akram-bitetracker.pbp.cs.ui.ac.
 
 # Application definition
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'MyBites',
     'editbites',
+    'sharebites',
 ]
 
 
@@ -138,5 +136,6 @@ else:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'editbites:login'
-LOGIN_REDIRECT_URL = 'editbites:main'
+LOGIN_URL = 'main:login'
+LOGIN_REDIRECT_URL = 'main:show_main'
+LOGOUT_REDIRECT_URL = 'main:login'

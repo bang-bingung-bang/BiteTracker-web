@@ -33,7 +33,7 @@ class Product(models.Model):
         return f"{self.nama_product} from {self.nama_toko_lokasi}"  # Update to reflect new field
 
 class MyBites(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     added_on = models.DateTimeField(auto_now_add=True)
 
