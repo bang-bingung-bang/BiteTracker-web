@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from artibites import views  # Import views dari aplikasi artibites
+from main import views #Import views dari main
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('artibites/', include('artibites.urls')),  # URL untuk artibites
-    path('', views.main_page, name='home'),  # Root URL mengarah ke main_page artibites
+    path('artibites/', include('artibites.urls')),
+    path('', include('main.urls')), 
+    path('', views.show_main, name='home'), 
 ]
 
 

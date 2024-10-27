@@ -7,7 +7,7 @@ from .models import Article
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'content', 'category', 'image', 'excerpt']  # Tambahkan kolom 'image' sebagai URLField
+        fields = ['title', 'content', 'category', 'image', 'excerpt']
 
     # Opsi untuk mengubah label 'image' menjadi 'Image URL' jika diinginkan
     def __init__(self, *args, **kwargs):
