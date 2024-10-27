@@ -5,6 +5,7 @@ from .models import Product
 from .forms import ProductForm
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
+import json
 
 def is_admin(user):
     return user.is_staff
@@ -94,3 +95,33 @@ def get_product_json(request):
         return JsonResponse(serializers.serialize("json", data), safe=False)
     else:
         return JsonResponse([], safe=False)
+    
+def add_products_from_fixtures(request):
+    with open('editbites/fixtures/data.json', 'r') as file:
+        data = json.load(file)
+
+    for item in data:
+        if isinstance(item, dict):  # Pastikan item adalah dictionary
+            fields = item.get('fields', {})  # Ambil 'fields' dari item
+            
+            # Buat instance baru dari model Product
+            product = Product(
+                store=fields.get('store'),
+                name=fields.get('name'),
+                price=fields.get('price'),
+                description=fields.get('description'),
+                calories=fields.get('calories'),
+                calorie_tag=fields.get('calorie_tag'),
+                vegan_tag=fields.get('vegan_tag'),
+                sugar_tag=fields.get('sugar_tag'),
+                image=fields.get('image'),
+                created_at=fields.get('created_at'),
+                updated_at=fields.get('updated_at')
+            )
+            
+            # Simpan instance ke database
+            product.save()
+
+            print(product)
+
+    return HttpResponse('Products added successfully!')
