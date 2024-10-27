@@ -9,16 +9,17 @@
 <style>
   /* Mengubah warna fokus untuk input dan textarea */
   input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: #533A2E;
-      box-shadow: 0 0 5px rgba(83, 58, 46, 0.5);
+      outline: none; /* Menghilangkan outline default */
+      border-color: #533A2E; /* Warna border saat fokus */
+      box-shadow: 0 0 5px rgba(83, 58, 46, 0.5); /* Tambahkan shadow untuk efek */
   }
 </style>
 
-<div class="min-h-screen flex items-center justify-center bg-white"> <!-- Menggunakan min-h-screen untuk posisi tengah -->
-  <div class="container mx-auto px-6 py-8 mt-16 max-w-3xl"> 
-    <div class="bg-white shadow-md rounded-lg p-8" style="border: 2px solid #533A2E; width: 800px;">
-      <h1 class="text-3xl font-bold text-center mb-8 text-black">Create Your Post 🍪</h1>
+<div class="flex flex-col min-h-screen bg-white">
+  <div class="container mx-auto px-4 py-8 mt-16 max-w-xl">
+    <h1 class="text-3xl font-bold text-center mb-8 text-black">Create Your Post 🍪</h1>
+    
+    <div class="bg-white shadow-md rounded-lg p-6" style="border: 2px solid #533A2E;">
       <form method="POST" class="space-y-6">
         {% csrf_token %}
         
@@ -79,6 +80,7 @@
         </div>
       </form>
     </div>
+    
   </div>
 </div>
 {% endblock content %}
