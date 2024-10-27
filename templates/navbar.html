@@ -29,7 +29,7 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Home Link -->
-              <a href="{% url 'main:show_main' %}" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
+              <a href="{% url 'main:show_main' %}" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}" aria-current="page">
                 Home
               </a>             
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
@@ -49,7 +49,7 @@
                 <a href="{% url 'editbites:product_list' %}" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' and request.path == '/editbites/' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
                   Products
                 </a>
-                
+
               {% elif user.is_staff %}
                 <a href="#" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' and request.path == '/artibites/' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}" aria-current="page">
                     ArtiBites
