@@ -161,11 +161,11 @@
             </div>
             <div class="caltrack-details">
                 <div class="caltrack-details-item">
-                    <img src="food-icon.png" alt="Jumlah Makanan" class="caltrack-details-icon w-6 h-6">
+                    <img src="{% static 'images/caltrackSpoon.png' %}" alt="Jumlah Makanan" class="caltrack-details-icon w-6 h-6">
                     <div class="caltrack-details-text">Food Consume: ${total_bites}</div>
                 </div>
                 <div class="caltrack-details-item">
-                    <img src="exercise-icon.png" alt="Jumlah Kalori" class="caltrack-details-icon w-6 h-6">
+                    <img src="{% static 'images/caltrackCalories.png' %}" alt="Jumlah Kalori" class="caltrack-details-icon w-6 h-6">
                     <div class="caltrack-details-text">Calorie: ${total}</div>
                 </div>
             </div>
@@ -209,7 +209,6 @@
     }
 
     async function deleteBiteEntry(id) {
-        console.log(id)
         return fetch(`/delete_bite_entry_ajax/${id}/`, {
             method: 'GET',
         }).then(() => refreshBiteEntriesByDate());
@@ -267,72 +266,6 @@
         const date = document.getElementById("selectedDate").value;
         return fetch(`/calculate_total_calories_by_date/${date}/`).then((res) => res.json())
     }
-    
-
-    // refreshBiteEntries()
-
-    // async function refreshBiteEntries() {
-    //     document.getElementById("calorieInformation").innerHTML = "";
-    //     document.getElementById("calorieInformation").className = "";
-    //     document.getElementById("calorieEntryList").innerHTML =  "";
-    //     document.getElementById("calorieEntryList").className =  "";
-
-    //     const entries = await getBiteEntries();
-    //     let htmlString = "";
-    //     let classNameString = "";
-
-    //     classNameString = ""
-
-    //     if (entries.length === 0) {
-    //         htmlString = "<p class='text-center text-gray-500'>No entries found</p>";
-    //     } else {
-    //         entries.forEach(entry => {
-    //             classNameString = "columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full"
-    //             const name = DOMPurify.sanitize(entry.fields.bite_name);
-    //             const calories = DOMPurify.sanitize(entry.fields.bite_calories);
-    //             const date = DOMPurify.sanitize(entry.fields.bite_date);
-    //             const time = DOMPurify.sanitize(entry.fields.bite_time);
-    //             htmlString += `
-    //                 <div class="bg-white p-6 rounded-lg shadow-lg mb-4">
-    //                     <h2 class="text-xl font-semibold text-gray-900">${name}</h2>
-    //                     <p class="text-sm text-gray-500">${calories} calories</p>
-    //                     <p class="text-sm text-gray-500">${date} at ${time}</p>
-    //                 </div>
-    //                 <div class="container">
-    //                     <h1>Calories</h1>
-    //                     <p>Remaining = Goal - Food + Exercise</p>
-
-    //                     <div class="circle">
-    //                         1840<br>
-    //                         Remaining
-    //                     </div>
-
-    //                     <div class="info">
-    //                         <div class="info-item">
-    //                         <i class="flag"></i>
-    //                         <span>Base Goal</span>
-    //                         <span>1840</span>
-    //                         </div>
-    //                         <div class="info-item">
-    //                         <i class="utensils"></i>
-    //                         <span>Food</span>
-    //                         <span>0</span>
-    //                         </div>
-    //                         <div class="info-item">
-    //                         <i class="fire"></i>
-    //                         <span>Exercise</span>
-    //                         <span>0</span>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             `;
-    //             }
-    //         );
-    //     }
-    //     document.getElementById("calorieEntryList").innerHTML = htmlString;
-    //     document.getElementById("calorieEntryList").className = classNameString;
-        
-    // }
 
     async function getBiteEntries() {
         return fetch("{% url 'TrackerBites:get_bite_tracker_json' %}").then((res) => res.json())
@@ -370,7 +303,7 @@
             method: 'POST',
             body: new FormData(document.querySelector('#BiteTrackerForm')),
         })
-        .then(response => refreshBiteEntries())
+        .then(response => refreshBiteEntriesByDate())
 
         document.getElementById("BiteTrackerForm").reset();
         document.querySelector("[data-modal-toggle='calorieModal']").click();

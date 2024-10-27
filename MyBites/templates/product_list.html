@@ -28,18 +28,21 @@
                 <div class="product bg-gray-100 shadow-xl hover:shadow-xl transition-shadow duration-300 border border-gray-300 rounded-lg overflow-hidden mx-auto hover:border-gray-500 flex flex-col h-full">
                     <div class="p-6 flex-grow">
                         <h2 class="text-2xl font-extrabold text-gray-900 mb-4 tracking-wider uppercase shadow-sm border bg-gray-300 rounded-md">
-                            {{ product.nama_product }}
+                            {{ product.name }}
                         </h2>
+
+                        <img src="{{ product.get_image_url }}" alt="{{ product.name }}" class="w-full h-auto mb-4 rounded-md shadow-lg">
                 
-                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Toko:</span> {{ product.nama_toko_lokasi }}</p>
-                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Harga:</span> <span class="text-amber-800">Rp. {{ product.harga }}</span></p>
-                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Deskripsi:</span> {{ product.deskripsi }}</p>
+                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Store:</span> {{ product.store }}</p>
+                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Price:</span> <span class="text-amber-800">Rp. {{ product.price }}</span></p>
+                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Calories:</span> {{ product.calories }}</p>
+                        <p class="text-gray-600 mb-2"><span class="font-semibold text-black">Description:</span> {{ product.description }}</p>
                 
-                        <div class="flex flex-wrap items-center mt-4 space-x-2">
-                            <span class="bg-yellow-200 text-gray-800 px-1 py-1 rounded-full text-xs font-medium">Tag Gula: {{ product.tag_gula }}</span>
-                            <span class="bg-yellow-300 text-gray-900 px-1 py-1 rounded-full text-xs font-medium">Tag Vegan: {{ product.tag_vegan }}</span>
-                            <span class="bg-yellow-400 text-gray-900 px-1 py-1 rounded-full text-xs font-medium">Tag Kalori: {{ product.tag_kalori }}</span>
-                        </div>
+                        <div class="flex flex-wrap justify-center items-center mt-4 space-x-2 object-center">
+                            <span class="bg-yellow-200 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">Sugar Tag: {{ product.sugar_tag }}</span>
+                            <span class="bg-yellow-300 text-gray-900 px-2 py-1 rounded-full text-xs font-medium">Vegan Tag: {{ product.vegan_tag }}</span>
+                            <span class="bg-yellow-400 text-gray-900 px-2 py-1 rounded-full text-xs font-medium">Calorie Tag: {{ product.calorie_tag }}</span>
+                        </div>                        
                     </div>
                     
                     <div class="mt-auto p-6">

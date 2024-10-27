@@ -6,7 +6,6 @@
 {% endblock meta %}
 
 {% block content %}
-
 <div class="hero-image" style="display: flex; justify-content: center; align-items: center; height: 100vh; background-size: cover;">
     <div class="login" style="background-color: rgba(255, 255, 255, 0.4); padding: 60px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); width: 900px;">
         <h1 style="font-weight: bold; font-size: 3em; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;">
@@ -15,7 +14,7 @@
         </h1>
         <p style="font-size: 1em; color: #000000;">Welcome, to BiteTracker!</p>
 
-        <form method="POST" action="">
+        <form method="POST">
             {% csrf_token %}
             <label for="username" style="font-size: 0.9em; display: block; margin-top: 20px; text-align: left;">Username<span style="color: red;">*</span></label>
             <input type="text" id="username" name="username" placeholder="Username" 
@@ -37,6 +36,10 @@
                        onmouseover="this.style.boxShadow='0 8px 12px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(-6px)';"
                        onmouseout="this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.transform='translateY(0)';">
             </div>
+
+            {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+            {% endif %}
         </form>
 
         <p style="font-size: 0.9em; color: #000000; margin-top: 20px;">New to this site? <a href="{% url 'main:register' %}" style="text-decoration: underline; margin-top: 30px;">Sign Up</a></p>
@@ -50,5 +53,4 @@
         {% endif %}
     </div>
 </div>
-
 {% endblock content %}

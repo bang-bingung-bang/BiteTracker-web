@@ -2,6 +2,7 @@ import json
 from venv import logger
 from django.core import serializers
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_http_methods
 from django.utils.html import strip_tags
@@ -58,7 +59,7 @@ def add_bite_calorie_entry_ajax(request):
 
 def delete_bite_entry_ajax(request, id):
     bite = BiteTrackerModel.objects.get(pk=id, user=request.user)
-    if not bite.exists():
+    if not bite:
         return HttpResponse({'success': False, 'error': 'Bite not found'}, status=404)
     bite.delete()
 
@@ -66,27 +67,18 @@ def delete_bite_entry_ajax(request, id):
 
 def edit_bite_entry_ajax(request, id):
     bite = BiteTrackerModel.objects.get(pk=id, user = request.user)
-    if not bite.exists():
-        return HttpResponse({'success': False, 'error': 'Bite not found'}, status=404)
-    bite = bite.first()
 
-    name = strip_tags(request.POST.get("name"))
-    calories = strip_tags(request.POST.get("calories"))
-    date = strip_tags(request.POST.get("date"))
-    time = strip_tags(request.POST.get("time"))
+    form = BiteTrackerForm(request.POST or None, instance=bite)
 
-    # Validasi input
-    if not name or not calories or not date or not time:
-        return HttpResponse({'success': False, 'error': 'All fields are required'}, status=400)
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('TrackerBites:show_tracker_bites'))
+    
+    context = {
+        'form': form,
+    }
 
-    # Simpan entri produk baru
-    bite.bite_name = name
-    bite.bite_calories = calories
-    bite.bite_date = date
-    bite.bite_time = time
-    bite.save()
-
-    return HttpResponse({'success': True, 'message': 'Product updated successfully'}, status=200)
+    return render(request, "edit_bite_calorie_entry.html", context)
 
 def get_bite_tracker_json(request):
     data = BiteTrackerModel.objects.filter(user=request.user)

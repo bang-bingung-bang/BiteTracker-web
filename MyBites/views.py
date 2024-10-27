@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from MyBites.models import Product, MyBites
+from MyBites.models import MyBites
+from editbites.models import Product
 from django.http import HttpResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
