@@ -269,6 +269,7 @@ nav {
     border-radius: 0.5rem; /* rounded-lg */
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
     height: 40px;
+}
   
 .lapar-image::before,
 .lapar-image::after{

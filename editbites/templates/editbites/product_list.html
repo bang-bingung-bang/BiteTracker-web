@@ -1,11 +1,10 @@
-<!-- templates/editbites/product_list.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="pt-6 min-h-screen bg-gray-50">
+<div class="pt-20 min-h-screen bg-gray-50">
     <div class="container mx-auto px-4 py-8">
         <!-- Title and Products Count -->
-        <div class="mb-6 text-center"> <!-- Tambahkan text-center di sini -->
+        <div class="mb-6">
             <h1 class="text-3xl font-bold">
                 {% if request.GET.filter == 'high_calories' %}High Calories Products
                 {% elif request.GET.filter == 'high_sugar' %}High Sugar Products
