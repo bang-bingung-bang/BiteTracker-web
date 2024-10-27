@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="min-h-screen pt-20 px-4">
+<div class="min-h-screen pt-10 pb-10 px-4">
     <!-- Breadcrumb -->
     <div class="container mx-auto max-w-7xl mb-6 text-sm">
         <a href="{% url 'main:show_main' %}" class="text-black hover:text-blue-600">Home</a>
@@ -9,20 +9,6 @@
         <a href="{% url 'editbites:product_list' %}" class="text-black hover:text-blue-600">All Products</a>
         <span class="mx-2">/</span>
         <span class="text-gray-600">{{ product.name }}</span>
-    </div>
-
-    <!-- Navigation -->
-    <div class="container mx-auto max-w-7xl flex justify-between mb-8">
-        <button class="text-gray-600 hover:text-black">
-            {% if prev_product %}
-            <a href="{% url 'editbites:product_detail' prev_product.pk %}">← Prev</a>
-            {% endif %}
-        </button>
-        <button class="text-gray-600 hover:text-black">
-            {% if next_product %}
-            <a href="{% url 'editbites:product_detail' next_product.pk %}">Next →</a>
-            {% endif %}
-        </button>
     </div>
 
     <!-- Product Content -->
@@ -38,7 +24,15 @@
             <!-- Right Column - Product Info -->
             <div>
                 <h1 class="text-4xl font-bold mb-4">{{ product.name }}</h1>
-                <p class="text-2xl mb-8">Rp{{ product.price|floatformat:2 }}</p>
+                <p class="text-2xl mb-4">Rp{{ product.price|floatformat:2 }}</p>
+
+                <!-- Additional Information -->
+                <div class="mb-6">
+                    <p><strong>Calories:</strong> {{ product.calories }} kcal</p>
+                    <p><strong>Calorie Tag:</strong> {{ product.calorie_tag }}</p>
+                    <p><strong>Sugar Tag:</strong> {{ product.sugar_tag }}</p>
+                    <p><strong>Vegan Tag:</strong> {{ product.vegan_tag }}</p>
+                </div>
 
                 {% if not user.is_staff %}
                 <a href="{% url 'MyBites:add_to_wishlist' product.pk %}" class="block w-full bg-[#6B4B3E] text-white py-3 px-6 rounded mb-8 text-center hover:bg-[#5A3F34] transition-colors">
