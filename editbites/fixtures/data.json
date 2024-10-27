@@ -11,7 +11,7 @@
             "calorie_tag": "LOW",
             "vegan_tag": "NON_VEGAN",
             "sugar_tag": "LOW",
-	"image" : "https://taro.id/content/taro/img/product/pack-tornadocheese.jpg",
+	        "image" : "https://taro.id/content/taro/img/product/pack-tornadocheese.jpg",
             "created_at": "2024-10-22T10:00:00Z",
             "updated_at": "2024-10-22T10:00:00Z"
         }

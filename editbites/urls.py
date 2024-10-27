@@ -11,4 +11,5 @@ urlpatterns = [
     # path('product/<int:pk>/delete/', views.delete_product, name='delete_product'),
     path('delete-product/<int:pk>/', views.delete_product, name='delete_product'),
     path('get_product_json/', views.get_product_json, name='get_product_json'),
+    path('add_products_from_fixtures/', views.add_products_from_fixtures, name='add_products_from_fixtures'),
 ]
