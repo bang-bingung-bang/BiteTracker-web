@@ -13,10 +13,8 @@ def is_admin(user):
 @login_required
 def product_list(request):
     filter_param = request.GET.get('filter')
-    search_query = request.GET.get('search')
     products = Product.objects.all()
 
-    # Apply filter based on filter_param
     if filter_param:
         if filter_param == 'high_calories':
             products = products.filter(calorie_tag='HIGH')
@@ -30,10 +28,6 @@ def product_list(request):
             products = products.filter(vegan_tag='NON_VEGAN')
         elif filter_param == 'vegan':
             products = products.filter(vegan_tag='VEGAN')
-
-    # Apply search filter if search_query is provided
-    if search_query:
-        products = products.filter(name__icontains=search_query)
 
     return render(request, 'editbites/product_list.html', {
         'products': products,
