@@ -161,11 +161,11 @@
             </div>
             <div class="caltrack-details">
                 <div class="caltrack-details-item">
-                    <img src="food-icon.png" alt="Jumlah Makanan" class="caltrack-details-icon w-6 h-6">
+                    <img src="{% static 'images/caltrackSpoon.png' %}" alt="Jumlah Makanan" class="caltrack-details-icon w-6 h-6">
                     <div class="caltrack-details-text">Food Consume: ${total_bites}</div>
                 </div>
                 <div class="caltrack-details-item">
-                    <img src="exercise-icon.png" alt="Jumlah Kalori" class="caltrack-details-icon w-6 h-6">
+                    <img src="{% static 'images/caltrackCalories.png' %}" alt="Jumlah Kalori" class="caltrack-details-icon w-6 h-6">
                     <div class="caltrack-details-text">Calorie: ${total}</div>
                 </div>
             </div>
@@ -370,7 +370,7 @@
             method: 'POST',
             body: new FormData(document.querySelector('#BiteTrackerForm')),
         })
-        .then(response => refreshBiteEntries())
+        .then(response => refreshBiteEntriesByDate())
 
         document.getElementById("BiteTrackerForm").reset();
         document.querySelector("[data-modal-toggle='calorieModal']").click();
