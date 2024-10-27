@@ -1,0 +1,1702 @@
+[
+    {
+        "model": "editbites.product",
+        "pk": 1,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Taro Keju",
+            "price": 6500,
+            "description": "Snack dengan rasa keju yang gurih.",
+            "calories": 140,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	        "image" : "https://taro.id/content/taro/img/product/pack-tornadocheese.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 2,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Maxicorn BBQ",
+            "price": 5000,
+            "description": "Snack jagung panggang rasa BBQ.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/1/31/a4757b71-cbd6-4b51-8544-6bfdf090a9c2.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 3,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Glico Pocky Strawberry",
+            "price": 13000,
+            "description": "Biskuit stik dengan lapisan stroberi.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://www.glico.com/id/assets/images/original/P-IDPS-restage2__1.png",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 4,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Tim Tam Chocolate",
+            "price": 15000,
+            "description": "Wafer cokelat dengan lapisan krim.",
+            "calories": 190,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://down-id.img.susercontent.com/file/id-11134207-7qukx-lhsh5oncuvdg21",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 5,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Wafer Loacker Napolitaner",
+            "price": 18000,
+            "description": "Wafer dengan krim hazelnut dan cokelat.",
+            "calories": 200,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://down-id.img.susercontent.com/file/c320689c281990065baa604986321162",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 6,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Kusuka Balado",
+            "price": 7000,
+            "description": "Keripik singkong rasa balado.",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/98/MTA-143683081/kusuka_kusuka_balado_60_gr_keripik_singkong_full01_8176b61b.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 7,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Chiki Balls Rasa Keju",
+            "price": 5500,
+            "description": "Bola-bola jagung rasa keju.",
+            "calories": 120,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi-gTnxD7iQ4OVXKZPAnnj9Kdvs4mdJ61flw&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 8,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Dua Kelinci Kacang Panggang",
+            "price": 9000,
+            "description": "Kacang panggang rasa gurih.",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh6LAU37MzYDKm4QmNQjZBZdNKkCP0VL_eNQ&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 9,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Mie Lidi Pedas",
+            "price": 3500,
+            "description": "Snack mi lidi dengan rasa pedas.",
+            "calories": 130,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://solvent-production.s3.amazonaws.com/media/images/products/2023/03/DSC_0040_1.JPG",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 10,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Nabati Richeese Rolls",
+            "price": 6500,
+            "description": "Wafer gulung dengan krim keju.",
+            "calories": 140,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7nX9T8gzl102mNJkwR5z56ZuRVinoo7vtQ&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 11,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Smax Rasa Jagung Bakar",
+            "price": 4500,
+            "description": "Snack rasa jagung bakar yang renyah.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://down-id.img.susercontent.com/file/id-11134207-7ras9-m13orw4vsda949",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 12,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Bon Gout Cookies Coklat",
+            "price": 10000,
+            "description": "Kue kering dengan cokelat.",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://images.tokopedia.net/img/cache/700/product-1/2018/7/14/36393333/36393333_9e8fbb26-6523-41fb-bba6-7c9d3951b21f_1400_1700.png",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 13,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Tango Waffle Crunch",
+            "price": 8000,
+            "description": "Waffle renyah dengan lapisan cokelat.",
+            "calories": 190,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://images.tokopedia.net/img/cache/700/product-1/2020/6/26/batch-upload/batch-upload_9f75e1f1-a65e-49e2-a496-25b41be0ff0b.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 14,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Kukis Monde Butter Cookies",
+            "price": 20000,
+            "description": "Kue kering dengan mentega asli.",
+            "calories": 170,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://images.tokopedia.net/img/cache/700/VqbcmM/2022/12/20/158f8177-4dad-4166-84ad-54611267a7d6.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 15,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Tini Wini Biti",
+            "price": 3500,
+            "description": "Biskuit kecil dengan rasa manis.",
+            "calories": 120,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCF5gNyqMBNNjVjMJoXs_nD-OCPRU-dqUoJA&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 16,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Gery Chocolatos Stick",
+            "price": 6000,
+            "description": "Stik wafer dengan lapisan cokelat.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYc2rhzWq_q87MRaWgOxU6zbbmSOoMnNin1w&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 17,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Mini Ritz Cheese Sandwich",
+            "price": 12000,
+            "description": "Biskuit sandwich dengan krim keju.",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_pmgmFQV-zQsCXSx-b67XFfielKsq4jzGtw&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 18,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Lays Salted Egg",
+            "price": 13000,
+            "description": "Keripik kentang dengan rasa telur asin.",
+            "calories": 170,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/6/20/f5ff02a0-fbfe-4c1e-9763-bd4b315bfe5e.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 19,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Nyam Nyam Strawberry",
+            "price": 7000,
+            "description": "Snack beras dengan krim stroberi.",
+            "calories": 130,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://down-id.img.susercontent.com/file/201cdea6e2c11abcea3fe7f5db5673f1",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 20,
+        "fields": {
+            "store": "QITA_MART",
+            "name": "Hello Panda Chocolate",
+            "price": 8500,
+            "description": "Kue kering isi cokelat.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image" : "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-2650827/meiji_hello_panda_biskuit_chocolate_42_g_full03_h5jtiro3.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 21,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Gery Saluut Malkist Keju",
+            "price": 6500,
+            "description": "Biskuit malkist dengan lapisan keju",
+            "calories": 130,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//94/MTA-2483761/gery_gery-saluut-malkist-sweet-cheese-110g_full02.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 22,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Happytos Tortilla Chips Nacho Cheese",
+            "price": 10000,
+            "description": "Keripik tortilla rasa keju nacho",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/115/MTA-159118999/no-brand_happy-tos-tortilla-chips-keju-nacho-140g_full01.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 23,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Sukro Kacang Atom Pedas",
+            "price": 8000,
+            "description": "Kacang atom dengan bumbu pedas",
+            "calories": 170,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/MTA-92831994/sukro_sukro_oven_pedas_-100_gr-_full02_s1l7srm.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 24,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Oishi Pillows Ubi",
+            "price": 7500,
+            "description": "Snack berbentuk bantal dengan rasa ubi",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX6B2WLKHm6-hJUEWi8f5tcprfdppUhUXnTQ&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 25,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Krisbee Kripik Kentang Original",
+            "price": 9000,
+            "description": "Keripik kentang rasa original",
+            "calories": 140,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//77/MTA-3400013/krisbee_potato-chip-kris-bee-75gr-bungkus-kentang-goreng_full02.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 26,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Regal Marie Biscuits",
+            "price": 8500,
+            "description": "Biskuit marie klasik",
+            "calories": 120,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://down-id.img.susercontent.com/file/b6ab12254219f9bf25dcf1f4f9d5d73f",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 27,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Koko Krunch Sereal",
+            "price": 15000,
+            "description": "Sereal gandum rasa coklat",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.nestle-cereals.com/id/sites/g/files/qirczx876/files/styles/1_1_768px_width/public/2024-08/KOKO%20KRUNCH%20300g.png.webp?itok=EoC5bM1r",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 28,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Mister Potato Crisps Barbecue",
+            "price": 11000,
+            "description": "Keripik kentang rasa barbeque",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://images.tokopedia.net/img/cache/700/product-1/2019/9/13/71160237/71160237_c26a4826-71ef-4cd0-bda6-a5d3ddc85973_500_500",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 29,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Fullo Wafer Roll Vanilla",
+            "price": 6000,
+            "description": "Wafer roll dengan krim vanilla",
+            "calories": 140,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://media.monotaro.id/mid01/big/Perlengkapan%20Dapur%20%26%20Horeka/Makanan/Makanan%20Ringan/Fullo%20Wafer%20Roll/Fullo%20Wafer%20Roll%20Pack%20Pede%20Vanilla%20Milk%207g%201pack(24pcs)/ncS030870840-2.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 30,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Monde Serena Gold Cheese Sandwich",
+            "price": 13000,
+            "description": "Biskuit sandwich dengan krim keju",
+            "calories": 170,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/97/MTA-133932480/monde_monde_serena_snack_gold_60_gr_full01_frz3foa5.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 31,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Leo Kripik Kentang Rumput Laut",
+            "price": 10500,
+            "description": "Keripik kentang rasa rumput laut",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://down-id.img.susercontent.com/file/61ce7a38aafff94380cddcfae17c8a60",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 32,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Beng Beng Maxx",
+            "price": 7000,
+            "description": "Wafer coklat dengan karamel dan rice crispy",
+            "calories": 190,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-11721493/beng-beng_beng_beng_maxx_chocolate_32_gr-_full02_feb911mo.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 33,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Selamat Wafer Stick Vanilla",
+            "price": 5500,
+            "description": "Wafer stick dengan krim vanilla",
+            "calories": 130,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-11720874/selamat_selamat_wafer_black_vanila_145_gr_full02_kc9h4sis.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 34,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Garuda Pilus Rumput Laut",
+            "price": 4000,
+            "description": "Snack ekstrudat rasa rumput laut",
+            "calories": 110,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://down-id.img.susercontent.com/file/id-11134207-7r98p-lxw0d9yqtkrf02",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 35,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Arnott's TimTam Original",
+            "price": 18000,
+            "description": "Biskuit berlapis coklat dengan isi krim coklat",
+            "calories": 200,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images-cdn.ubuy.co.id/6555ea7884432b49bc620c43-arnotts-tim-tam-original-3-pack.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 36,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Sari Roti Sandwich Coklat",
+            "price": 5000,
+            "description": "Roti sandwich dengan isi coklat",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/8/19/feb254b0-5b95-4e0f-b527-412cf7c669a5.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 37,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Japota Honey Butter",
+            "price": 12000,
+            "description": "Keripik kentang rasa mentega madu",
+            "calories": 170,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/700/hDjmkQ/2022/6/3/4051e92e-52ef-45af-bea1-995f8d914c39.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 38,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Okky Jelly Drink Jeruk",
+            "price": 2500,
+            "description": "Minuman jelly rasa buah jeruk",
+            "calories": 80,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://arti-assets.sgp1.digitaloceanspaces.com/renyswalayanku/products/8ea040d8-8fdf-47aa-9ab2-ddb043d5bc48.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 39,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Slai O'lai Strawberry Jam",
+            "price": 8500,
+            "description": "Biskuit sandwich dengan selai stroberi",
+            "calories": 140,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-2650538/roma_roma-slai-o-lai-strawberry-128-gram_full02.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 40,
+        "fields": {
+            "store": "TUTUL_V_MARKET",
+            "name": "Kusuka Keripik Singkong Balado",
+            "price": 9500,
+            "description": "Keripik singkong rasa balado",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/7/29/57969e4c-11d2-4436-90ec-f70cdcf3c7c2.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 41,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Taro Net Seaweed",
+            "price": 12000,
+            "description": "Snack berbentuk jaring dengan rasa rumput laut.",
+            "calories": 200,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://taro.id/content/taro/img/product/pack-seaweed.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 42,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Beng Beng Share It",
+            "price": 6000,
+            "description": "Wafer berlapis karamel, krim, dan cokelat.",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://solvent-production.s3.amazonaws.com/media/images/products/2021/04/1910a.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 43,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Choki Choki Cokelat",
+            "price": 3500,
+            "description": "Coklat pasta dalam bentuk stik.",
+            "calories": 100,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.mayora.com/storage/files/coki.png",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 44,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Piattos Sapi Panggang",
+            "price": 11000,
+            "description": "Snack kentang rasa sapi panggang.",
+            "calories": 210,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+"image": "https://images.tokopedia.net/img/cache/700/OJWluG/2022/10/5/f9481ef9-faed-4554-b000-6c7b623a036c.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 45,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Good Time Choco Chips",
+            "price": 8000,
+            "description": "Biskuit choco chip yang renyah.",
+            "calories": 190,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//94/MTA-1380774/good-time_good-time-classic-chocochips-cookies--72-g-_full03.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 46,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Malkist Abon Gurih",
+            "price": 6000,
+            "description": "Biskuit dengan taburan abon yang gurih.",
+            "calories": 140,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://down-id.img.susercontent.com/file/96c3cca696dc66959dea877f0411f76c",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 47,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Roma Kelapa",
+            "price": 5000,
+            "description": "Biskuit kelapa yang renyah dan gurih.",
+            "calories": 170,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://img.ws.mms.shopee.co.id/id-11134201-7qukw-ljpclsrzknbv45",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 48,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Soyjoy Almond & Chocolate",
+            "price": 16000,
+            "description": "Bar granola dengan almond dan cokelat.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//97/MTA-10839813/soyjoy_soyjoy-almond-and-chocolate-30g_full01.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 49,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Tropicana Slim Cookies",
+            "price": 16000,
+            "description": "Cookies dengan rendah gula dan vegan.",
+            "calories": 160,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://nutrimart.co.id/cdn/shop/products/untitled_design_2.jpg?v=1710907163",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 50,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Quaker Oats Original",
+            "price": 15000,
+            "description": "Oatmeal original kaya serat.",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.quakeroats.com/sites/quakeroats.com/files/2024-02/00030000567340_C1C1.png",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 51,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "SilverQueen Dark Chocolate",
+            "price": 17000,
+            "description": "Cokelat batangan dark chocolate.",
+            "calories": 250,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://s0.bukalapak.com/img/52292206152/large/data.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 52,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Rebo Kacang Kulit",
+            "price": 5000,
+            "description": "Kacang goreng dengan kulit.",
+            "calories": 90,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://image.astronauts.cloud/product-images/2024/4/ReboKuaciOriginal1_523e2f97-cff6-4b41-97e8-27d7aac12b8f_898x900.png",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 53,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Fitbar Fruits",
+            "price": 12000,
+            "description": "Snack granola dengan buah-buahan.",
+            "calories": 150,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2020/9/9/1f61e6c9-8119-43f0-96f1-042797f44076.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 54,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Fitbar Nuts",
+            "price": 13000,
+            "description": "Snack granola dengan kacang-kacangan.",
+            "calories": 140,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//106/MTA-9199852/fitbar_fitbar_nuts_delight_multigrain_bar__snack_-22_g-_full01_h4m4t0ux.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 55,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Nissin Biskuit Kelapa",
+            "price": 4000,
+            "description": "Biskuit kelapa yang renyah.",
+            "calories": 170,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/100/MTA-162432775/nissin_nissin-biscuit-kelapa-ijo-280g_full01.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 56,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Cadbury Dairy Milk",
+            "price": 25000,
+            "description": "Cokelat susu dengan krim lembut.",
+            "calories": 250,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/9/20/a6794032-7fb8-4004-8f19-b2a726608261.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 57,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Tango Wafer Vanilla",
+            "price": 6000,
+            "description": "Wafer renyah dengan lapisan vanilla.",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/7/17/f32a25ed-5ed4-42ff-8591-56ecf23c2c5a.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 58,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "SilverQueen Cashew",
+            "price": 15000,
+            "description": "Cokelat batangan dengan kacang mete.",
+            "calories": 230,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://solvent-production.s3.amazonaws.com/media/images/products/2021/06/DSC_0124_copy_Vm1fdVM.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 59,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Lays BBQ",
+            "price": 12000,
+            "description": "Keripik kentang rasa BBQ.",
+            "calories": 160,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://down-id.img.susercontent.com/file/a591b55ec33fa99e8c5c57358909f128",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 60,
+        "fields": {
+            "store": "AL_HIKAM_MART",
+            "name": "Oreo Ice Cream Sandwich",
+            "price": 20000,
+            "description": "Oreo sandwich dengan es krim.",
+            "calories": 110,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.oreoicecream.com/static/b2718f205199e3578a1b82fd00b7fb8e/3b17a/O_SW_LF_bdb991019d.png",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 61,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Soyjoy Strawberry",
+            "price": 18000,
+            "description": "Bar granola dengan rasa stroberi.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image" : "https://solvent-production.s3.amazonaws.com/media/images/products/2021/05/5375a.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 62,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Tropicana Slim Cookies",
+            "price": 25000,
+            "description": "Biskuit rendah gula, terbuat dari bahan alami, cocok untuk menjaga asupan gula.",
+            "calories": 90,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://nutrimart.co.id/cdn/shop/products/untitled_design_2.jpg?v=1710907163",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 63,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Lays Classic",
+            "price": 18000,
+            "description": "Keripik kentang dengan rasa gurih klasik, renyah, cocok sebagai camilan kapan saja.",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://down-id.img.susercontent.com/file/c74290c0d890f86ff2ea9f600b478c62",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 64,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Pocky Oreo",
+            "price": 12000,
+            "description": "Biskuit stik berlapis krim dengan rasa cookies & cream",
+            "calories": 230,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/700/hDjmkQ/2022/12/6/2c460129-8029-4de8-9ad3-de210b466974.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 65,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Chitato BBQ",
+            "price": 18000,
+            "description": "Keripik kentang berbumbu BBQ, renyah, cocok sebagai camilan saat berkumpul.",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://arti-assets.sgp1.digitaloceanspaces.com/renyswalayanku/products/fcedcf0a-fa78-4f4c-92ac-a3c5413501c5.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 66,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Tango Wafer Chocolate",
+            "price": 10000,
+            "description": "Wafer renyah dengan krim cokelat yang lembut di dalamnya.",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-11752005/tango_tango_wafer_long_chocolate_120_gr_full03_cv85rtaq.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 67,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Belvita Breakfast Biscuits",
+            "price": 20000,
+            "description": "Biskuit sarapan yang kaya serat, cocok untuk camilan sehat di pagi hari.",
+            "calories": 200,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/2/20/c3819e22-14e2-4b89-a980-b360c0684f7f.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 68,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Roma Sari Gandum",
+            "price": 15000,
+            "description": "Biskuit gandum sehat yang kaya serat, cocok untuk camilan di sela-sela waktu makan",
+            "calories": 120,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-20896348/roma_roma_sari_gandum_digestive_149_gr_full02_kr1baen1.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 69,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Sunbites Multigrain Chips",
+            "price": 22000,
+            "description": "Keripik multigrain yang sehat dengan rasa yang gurih, kaya serat.",
+            "calories": 140,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://m.media-amazon.com/images/I/51w6fBMR6TL._AC_UF1000,1000_QL80_.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 70,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Ritz Crackers",
+            "price": 10000,
+            "description": "Crackers ringan dan renyah, cocok sebagai camilan atau pendamping makanan lainnya.",
+            "calories": 70,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-21517372/nabisco_nabisco_ritz_crackers_100gr_pak_full05_krw7xjo4.png",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 71,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Chitato Lite",
+            "price": 20000,
+            "description": "Keripik kentang rendah lemak dengan rasa BBQ, tetap renyah dan lezat.",
+            "calories": 150,
+            "calorie_tag": "LOW",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://solvent-production.s3.amazonaws.com/media/images/products/2021/11/DSC_0966_njMh3Th.JPG",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 72,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Pilus Garuda Sapi Panggang",
+            "price": 7000,
+            "description": "Snack berbentuk bulat-bulat kecil dengan rasa yang gurih dan aroma sapi panggang.",
+            "calories": 418,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/4/14/a663db12-9d4b-48d1-9d1f-20abc7c7878e.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 73,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Oreo Thins",
+            "price": 15000,
+            "description": "Versi tipis dari biskuit Oreo klasik, lebih ringan dan renyah.",
+            "calories": 140,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.albertsons-media.com/is/image/ABS/970597795-A1C1?$ng-ecom-pdp-desktop$&defaultImage=Not_Available",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 74,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Granola Bar Fitbar",
+            "price": 8000,
+            "description": "Granola bar cokelat rendah kalori dengan oat dan gandum, cocok untuk camilan sehat.",
+            "calories": 90,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://down-id.img.susercontent.com/file/id-11134207-7r98t-lu07ej43kw2w8b",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 75,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Kellogg's Granola",
+            "price": 35000,
+            "description": "Campuran granola dengan kacang-kacangan dan oat, kaya akan serat dan cocok untuk camilan sehat.",
+            "calories": 210,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/104/MTA-177465307/kellogg-s_kelloggs-granola-mixed-berries-220gr_full01-11d3fb21.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 76,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Soyjoy Tropical Cranberries",
+            "price": 10000,
+            "description": "Snack bar sehat kedelai utuh pertama dengan rasa asam manis di indonesia.",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://solvent-production.s3.amazonaws.com/media/images/products/2023/09/BRM_0364.JPG",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 77,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Pringles Cheesy Cheese",
+            "price": 25000,
+            "description": "Keripik kentang yang terbuat dari bahan kentang asli dengan taburan keju dan bertekstur tipis, sehingga menghasilkan rasa gurih dan renyah.",
+            "calories": 140,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/MTA-20896448/pringles_pringles_cheesy_cheese_102_gr_full02_s5b3sgk3.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 78,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Special K Red Berries",
+            "price": 35000,
+            "description": "Sereal rendah kalori dengan tambahan buah berry kering, kaya serat dan nutrisi.",
+            "calories": 110,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://m.media-amazon.com/images/I/71BoodPRbpL.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 79,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Cadbury Dairy Milk Oreo",
+            "price": 22000,
+            "description": "Cokelat susu Cadbury Dairy yang lembut dan lezat, diisi dengan isian rasa vanila yang lembut dan potongan Oreo yang renyah",
+            "calories": 170,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://assets.klikindomaret.com/share/20082195/20082195_1.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 80,
+        "fields": {
+            "store": "SNACK_JAYA_MARKET",
+            "name": "Pocky Strawberry",
+            "price": 12000,
+            "description": "Biskuit stik sumber serat dengan aroma manis dari buah stroberi.",
+            "calories": 200,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.mustakshif.com/public/uploads/products/glico-pocky-strawberry-cream-covered-biscuit-sticks_0073141152518_Mustakshif.webp",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 81,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Chitato Original",
+            "price": 12000,
+            "description": "Keripik kentang dengan rasa original",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-20896431/chitato_chitato_rasa_asli_68_gr_full02_e7zjxsek.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 82,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "KitKat Chunky",
+            "price": 10000,
+            "description": "Cokelat dengan wafer renyah di dalam",
+            "calories": 220,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/MTA-3972540/kitkat_kitkat_chunky_original_chocolate_38_g_full04_ig19hp4e.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 83,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Soyjoy Almond & Chocolate",
+            "price": 8000,
+            "description": "Snack bar berbasis kedelai dengan rasa almond dan cokelat",
+            "calories": 130,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//97/MTA-10839813/soyjoy_soyjoy-almond-and-chocolate-30g_full01.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 84,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Roma Kelapa",
+            "price": 9000,
+            "description": "Biskuit kelapa dengan rasa gurih manis",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://img.ws.mms.shopee.co.id/id-11134201-7qukw-ljpclsrzknbv45",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 85,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Fitbar Cokelat",
+            "price": 6000,
+            "description": "Snack bar rendah kalori berbasis oat dan cokelat",
+            "calories": 90,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://down-id.img.susercontent.com/file/id-11134201-23030-e8fb8t3kpfov4c",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 86,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "SilverQueen Chunky Bar",
+            "price": 15000,
+            "description": "Cokelat kacang mete dengan tekstur padat",
+            "calories": 230,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/UK-0059392/silverqueen_silverqueen-chunky-bar-cashew--100-g-_full02.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 87,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Lays Sour Cream & Onion",
+            "price": 13000,
+            "description": "Keripik kentang dengan rasa sour cream dan bawang",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://raisa.aeonstore.id/wp-content/uploads/2024/05/8927439.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 88,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Good Time Double Choc",
+            "price": 7000,
+            "description": "Kue kering cokelat dengan potongan cokelat leleh",
+            "calories": 170,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://kliktobuy.com/wp-content/uploads/2023/01/good-time-double-choc-72-gr_8886015203115.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 89,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Pringles Original",
+            "price": 15000,
+            "description": "Keripik kentang dengan rasa asin khas",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://images.tokopedia.net/img/cache/700/product-1/2020/6/24/626344/626344_96d5a7f2-864f-4cd8-b2cc-e7cd65e2e87a_1024_1024.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 90,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Quaker Oat Cookies",
+            "price": 11000,
+            "description": "Biskuit berbahan dasar gandum oat yang sehat",
+            "calories": 120,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRphY9ry1ErSLBG3x5Rh8GZFZl1A6Idm9loyQ&s",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 91,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Cheetos Crunchy Cheese",
+            "price": 10000,
+            "description": "Snack jagung renyah dengan rasa keju",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/10/5/6b0abb59-4f0a-47c0-ba14-2dee2f7b1922.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 92,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Nabati Cheese Wafer",
+            "price": 5000,
+            "description": "Wafer tipis dengan lapisan keju",
+            "calories": 140,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-55320419/nabati_nabati_richeese_wafer_krim_keju_122_gr_full03_fsbhjc7.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 93,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Cadbury Dairy Milk Cashew Nut",
+            "price": 18000,
+            "description": "Cokelat susu dengan rasa creamy yang terdapat kacang mete",
+            "calories": 240,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-13978697/cadbury_cadbury_dairymilk_cashewnut_62_gr_full02_tqrybs0r.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 94,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Twisted Potato",
+            "price": 9000,
+            "description": "Keripik kentang dengan bumbu pedas manis",
+            "calories": 130,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://img.buzzfeed.com/video-api-prod/assets/a1f17189a78c4004acb92bdf092dc711/BFV12958_TornadoPotato-ThumbTextless1080.jpg?resize=1200:*",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 95,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Biskuit Marie Regal",
+            "price": 8000,
+            "description": "Biskuit manis klasik dengan rasa vanila",
+            "calories": 150,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//91/MTA-1541791/regal_regal-marie-biskuit--250-g-_full02.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 96,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Oishi Pillow Choco",
+            "price": 6000,
+            "description": "Bantal mini renyah berisi cokelat",
+            "calories": 180,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://down-id.img.susercontent.com/file/id-11134207-7r98r-lncxrrnrm9ue56",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 97,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Energizer Oat Chocolate",
+            "price": 8500,
+            "description": "Snack oat sehat dengan lapisan cokelat di atasnya",
+            "calories": 110,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://images.tokopedia.net/img/cache/700/product-1/2019/9/2/71160237/71160237_14895804-229c-46fd-a4f6-aae7cce844ae_1000_1000",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 98,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Tango Wafer Cokelat",
+            "price": 7500,
+            "description": "Wafer dengan lapisan cokelat manis",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-11752005/tango_tango_wafer_long_chocolate_120_gr_full03_cv85rtaq.jpeg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 99,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Popcorn Indiana Sea Salt",
+            "price": 12000,
+            "description": "Popcorn rendah kalori dengan garam laut",
+            "calories": 100,
+            "calorie_tag": "LOW",
+            "vegan_tag": "VEGAN",
+            "sugar_tag": "LOW",
+	"image": "https://assets.syndigo.cloud/cdn/a56a4514-793c-4e7c-bf47-2f64f1ef04a2/fileType_jpg;size_600x600/a56a4514-793c-4e7c-bf47-2f64f1ef04a2",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "editbites.product",
+        "pk": 100,
+        "fields": {
+            "store": "BELANDA_MART",
+            "name": "Oreo Original",
+            "price": 6000,
+            "description": "Biskuit sandwich dengan krim vanila",
+            "calories": 160,
+            "calorie_tag": "HIGH",
+            "vegan_tag": "NON_VEGAN",
+            "sugar_tag": "HIGH",
+	"image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/5/29/6be8c983-2d6e-4f54-a922-9458677da7f1.jpg",
+            "created_at": "2024-10-22T10:00:00Z",
+            "updated_at": "2024-10-22T10:00:00Z"
+        }
+    }
+]

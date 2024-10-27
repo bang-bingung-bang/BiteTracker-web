@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'editbites',
     'artibites',
     'main',
+    'MyBites',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ else:
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'main:login'
+LOGIN_REDIRECT_URL = 'main:show_main'
+LOGOUT_REDIRECT_URL = 'main:login'

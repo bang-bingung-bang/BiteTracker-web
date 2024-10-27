@@ -11,3 +11,4 @@ class Snack(models.Model):
     Year_Of_Publication = models.PositiveIntegerField()
     Publisher = models.CharField(max_length=255)
     Image = models.URLField()
+
