@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block meta %}
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
 {% endblock meta %}
 
 {% block content %}
 {% include 'navbar.html' %}
-<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-10 min-h-screen bg-gray-100 flex flex-col">
     <div class="flex justify-end mb-6">
-        <a href="{% url 'TrackerBites:add_bite_calorie_entry' %}" class="bg-indigo-400 hover:bg-indigo-400 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 mx-4 ">
-            Add New Mood Entry
-        </a>
-        <button data-modal-target="calorieModal" data-modal-toggle="calorieModal" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105" onclick="showModal();">
-          Add New Bites AJAX
-        </button>
+        <input type="date" id="selectedDate" class="border rounded-lg px-3 py-2 mr-4" onchange="refreshBiteEntriesByDate();">
     </div>
 
+    <div class="flex gap-2 mb-10 items-stretch">
+        <div id="calorieInformation" class="flex-1"></div>
+        <div class="caltrack-entry-cards">
+            <div class="grid grid-cols-1 flex items-center">
+                <div class="caltrack-entry-title">Finished your bites for the day?</div>
+                <button data-modal-target="calorieModal" data-modal-toggle="calorieModal" class="btn-add-bites" onclick="showModal();">
+                    Add New Bites
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <!-- entry list dengan AJAX-->
     <div id="calorieInformation"></div>
     <div id="calorieEntryList">
@@ -73,8 +79,8 @@
         </div>
     </div>
 
-    <div class="flex flex-wrap -mx-1 lg:-mx-4">
-        <div class="w-full lg:w-1/2 px-1 lg:px-4 mb-4">
+    <div class="flex flex-wrap justify-between">
+        <div class="w-full lg:w-1/4 px-1 mb-4">
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-xl font-semibold text-gray-900">Breakfast</h2>
                 <div class="mt-4">
@@ -84,7 +90,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full lg:w-1/2 px-1 lg:px-4 mb-4">
+        <div class="w-full lg:w-1/4 px-1 mb-4">
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-xl font-semibold text-gray-900">Lunch</h2>
                 <div class="mt-4">
@@ -94,7 +100,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full lg:w-1/2 px-1 lg:px-4 mb-4">
+        <div class="w-full lg:w-1/4 px-1 mb-4">
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-xl font-semibold text-gray-900">Dinner</h2>
                 <div class="mt-4">
@@ -104,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full lg:w-1/2 px-1 lg:px-4 mb-4">
+        <div class="w-full lg:w-1/4 px-1 mb-4">
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-xl font-semibold text-gray-900">Snacks</h2>
                 <div class="mt-4">
@@ -118,25 +124,70 @@
 </div>
 
 <script>
-    refreshBiteEntries()
+    document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('selectedDate').value = today;
+        refreshBiteEntriesByDate(); // Optionally call this function to load entries for today
+    });
 
-    async function refreshBiteEntries() {
-        document.getElementById("calorieInformation").innerHTML = "";
-        document.getElementById("calorieInformation").className = "";
-        document.getElementById("calorieEntryList").innerHTML =  "";
-        document.getElementById("calorieEntryList").className =  "";
+    async function refreshBiteEntriesByDate() {
+        BiteEntriesInformation();
+        BiteEntriesListByDateNTime("breakfast");
+        BiteEntriesListByDateNTime("lunch");
+        BiteEntriesListByDateNTime("dinner");
+        BiteEntriesListByDateNTime("snack");
+    }
 
-        const entries = await getBiteEntries();
+    async function BiteEntriesInformation() {
+        const totalCalories = await getTotalCaloriesByDate();
+        let htmlString = "";
+        let classNameString = "";
+        const total = totalCalories.total_calories;
+        const total_percentage = 100-totalCalories.total_calories_percentage;
+        const total_bites = totalCalories.total_bites;
+        htmlString = 
+        `<div class="caltrack-information-card">
+            <div class="text-2xl font-bold mb-2">Calorie Tracker</div>
+            <div class="caltrack-circular-progress">
+                <!-- Circular Progress -->
+                <svg class="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background Circle -->
+                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200" stroke-width="2"></circle>
+                    <!-- Progress Circle -->
+                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-blue-600" stroke-width="2" stroke-dasharray="100" stroke-dashoffset=${total_percentage} stroke-linecap="round"></circle>
+                </svg>
+                <!-- Percentage Text -->
+                <div class="caltrack-percentage-text">${total} Cal.</div>
+            </div>
+            <div class="caltrack-details">
+                <div class="caltrack-details-item">
+                    <img src="food-icon.png" alt="Jumlah Makanan" class="caltrack-details-icon w-6 h-6">
+                    <div class="caltrack-details-text">Food Consume: ${total_bites}</div>
+                </div>
+                <div class="caltrack-details-item">
+                    <img src="exercise-icon.png" alt="Jumlah Kalori" class="caltrack-details-icon w-6 h-6">
+                    <div class="caltrack-details-text">Calorie: ${total}</div>
+                </div>
+            </div>
+        </div>
+        `;
+
+        document.getElementById("calorieInformation").innerHTML = htmlString;
+        document.getElementById("calorieInformation").className = classNameString;
+    }
+
+    async function BiteEntriesEntryList() {
+        const entries = await getBiteEntriesByDate();
         let htmlString = "";
         let classNameString = "";
 
         classNameString = ""
 
+        console.log(entries)
         if (entries.length === 0) {
             htmlString = "<p class='text-center text-gray-500'>No entries found</p>";
         } else {
             entries.forEach(entry => {
-                classNameString = "columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full"
                 const name = DOMPurify.sanitize(entry.fields.bite_name);
                 const calories = DOMPurify.sanitize(entry.fields.bite_calories);
                 const date = DOMPurify.sanitize(entry.fields.bite_date);
@@ -146,33 +197,8 @@
                         <h2 class="text-xl font-semibold text-gray-900">${name}</h2>
                         <p class="text-sm text-gray-500">${calories} calories</p>
                         <p class="text-sm text-gray-500">${date} at ${time}</p>
-                    </div>
-                    <div class="container">
-                        <h1>Calories</h1>
-                        <p>Remaining = Goal - Food + Exercise</p>
-
-                        <div class="circle">
-                            1840<br>
-                            Remaining
-                        </div>
-
-                        <div class="info">
-                            <div class="info-item">
-                            <i class="flag"></i>
-                            <span>Base Goal</span>
-                            <span>1840</span>
-                            </div>
-                            <div class="info-item">
-                            <i class="utensils"></i>
-                            <span>Food</span>
-                            <span>0</span>
-                            </div>
-                            <div class="info-item">
-                            <i class="fire"></i>
-                            <span>Exercise</span>
-                            <span>0</span>
-                            </div>
-                        </div>
+                        <button class="caltrack-btn-delete-bites" onclick="deleteBiteEntry('${entry.pk}');">Delete</button>
+                        <button class="caltrack-btn-edit-bites" onclick="editBiteEntry('${entry.pk}');">Edit</button>
                     </div>
                 `;
                 }
@@ -180,8 +206,133 @@
         }
         document.getElementById("calorieEntryList").innerHTML = htmlString;
         document.getElementById("calorieEntryList").className = classNameString;
+    }
+
+    async function deleteBiteEntry(id) {
+        console.log(id)
+        return fetch(`/delete_bite_entry_ajax/${id}/`, {
+            method: 'GET',
+        }).then(() => refreshBiteEntriesByDate());
+    }
+
+    async function editBiteEntry(id) {
+        return fetch(`/edit_bite_entry_ajax/${id}/`, {
+            method: 'GET',
+        }).then(() => refreshBiteEntriesByDate());
+    }
+
+    async function BiteEntriesListByDateNTime(time) {
+        const entries = await getBiteEntriesByDateNTime(time);
+        let htmlString = "";
+        let classNameString = "";
+
+        classNameString = ""
+
+        if (entries.length === 0) {
+            htmlString = "<p class='text-center text-gray-500'>No entries found</p>";
+        } else {
+            entries.forEach(entry => {
+                const name = DOMPurify.sanitize(entry.fields.bite_name);
+                const calories = DOMPurify.sanitize(entry.fields.bite_calories);
+                const date = DOMPurify.sanitize(entry.fields.bite_date);
+                const time = DOMPurify.sanitize(entry.fields.bite_time);
+                htmlString += `
+                    <div class="bg-indigo-100 p-6 rounded-lg shadow-lg mb-4">
+                        <h2 class="text-xl font-semibold text-gray-900">${name}</h2>
+                        <p class="text-sm text-gray-500">${calories} calories</p>
+                        <p class="text-sm text-gray-500">${date} at ${time}</p>
+                        <button class="caltrack-btn-delete-bites" onclick="deleteBiteEntry('${entry.pk}');">Delete</button>
+                        <button class="caltrack-btn-edit-bites" onclick="editBiteEntry('${entry.pk}');">Edit</button>
+                    </div>
+                `;
+                }
+            );
+        }
+        document.getElementById(`${time}List`).innerHTML = htmlString;
+        document.getElementById(`${time}List`).className = classNameString;
+    }
+
+    async function getBiteEntriesByDate() {
+        const date = document.getElementById("selectedDate").value;
+        return fetch(`/get_bite_tracker_json_by_date/${date}/`).then((res) => res.json())
+    }
+
+    async function getBiteEntriesByDateNTime(time) {
+        const date = document.getElementById("selectedDate").value;
+        return fetch(`/get_bite_tracker_json_by_date_and_time/${date}/${time}/`).then((res) => res.json())
         
     }
+
+    async function getTotalCaloriesByDate() {
+        const date = document.getElementById("selectedDate").value;
+        return fetch(`/calculate_total_calories_by_date/${date}/`).then((res) => res.json())
+    }
+    
+
+    // refreshBiteEntries()
+
+    // async function refreshBiteEntries() {
+    //     document.getElementById("calorieInformation").innerHTML = "";
+    //     document.getElementById("calorieInformation").className = "";
+    //     document.getElementById("calorieEntryList").innerHTML =  "";
+    //     document.getElementById("calorieEntryList").className =  "";
+
+    //     const entries = await getBiteEntries();
+    //     let htmlString = "";
+    //     let classNameString = "";
+
+    //     classNameString = ""
+
+    //     if (entries.length === 0) {
+    //         htmlString = "<p class='text-center text-gray-500'>No entries found</p>";
+    //     } else {
+    //         entries.forEach(entry => {
+    //             classNameString = "columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full"
+    //             const name = DOMPurify.sanitize(entry.fields.bite_name);
+    //             const calories = DOMPurify.sanitize(entry.fields.bite_calories);
+    //             const date = DOMPurify.sanitize(entry.fields.bite_date);
+    //             const time = DOMPurify.sanitize(entry.fields.bite_time);
+    //             htmlString += `
+    //                 <div class="bg-white p-6 rounded-lg shadow-lg mb-4">
+    //                     <h2 class="text-xl font-semibold text-gray-900">${name}</h2>
+    //                     <p class="text-sm text-gray-500">${calories} calories</p>
+    //                     <p class="text-sm text-gray-500">${date} at ${time}</p>
+    //                 </div>
+    //                 <div class="container">
+    //                     <h1>Calories</h1>
+    //                     <p>Remaining = Goal - Food + Exercise</p>
+
+    //                     <div class="circle">
+    //                         1840<br>
+    //                         Remaining
+    //                     </div>
+
+    //                     <div class="info">
+    //                         <div class="info-item">
+    //                         <i class="flag"></i>
+    //                         <span>Base Goal</span>
+    //                         <span>1840</span>
+    //                         </div>
+    //                         <div class="info-item">
+    //                         <i class="utensils"></i>
+    //                         <span>Food</span>
+    //                         <span>0</span>
+    //                         </div>
+    //                         <div class="info-item">
+    //                         <i class="fire"></i>
+    //                         <span>Exercise</span>
+    //                         <span>0</span>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             `;
+    //             }
+    //         );
+    //     }
+    //     document.getElementById("calorieEntryList").innerHTML = htmlString;
+    //     document.getElementById("calorieEntryList").className = classNameString;
+        
+    // }
 
     async function getBiteEntries() {
         return fetch("{% url 'TrackerBites:get_bite_tracker_json' %}").then((res) => res.json())
@@ -221,10 +372,8 @@
         })
         .then(response => refreshBiteEntries())
 
-        print("Berhasil")
-
         document.getElementById("BiteTrackerForm").reset();
-        document.querySelector("[data-modal-toggle='CalorieModal']").click();
+        document.querySelector("[data-modal-toggle='calorieModal']").click();
     }
     
 </script>

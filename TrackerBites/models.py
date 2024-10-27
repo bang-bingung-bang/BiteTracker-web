@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 class BiteTrackerModel(models.Model):
     time_choices = (
-        ('Breakfast', 'Breakfast'),
-        ('Lunch', 'Lunch'),
-        ('Dinner', 'Dinner'),
-        ('Snack', 'Snack'),
+        ('breakfast', 'Breakfast'),
+        ('lunch', 'Lunch'),
+        ('dinner', 'Dinner'),
+        ('snack', 'Snack'),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
