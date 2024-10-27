@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'TrackerBites',
     'editbites',
     'sharebites',
+    'artibites'
 ]
 
 
