@@ -28,15 +28,31 @@
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
+              <!-- Home Link -->
+              <a href="{% url 'main:show_main' %}" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
+                Home
+              </a>             
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               {% if not user.is_staff %}
-                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">ArtiBites</a>
-                <a href="{% url 'MyBites:wishlist' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">MyBites</a>
-                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">TrackerBites</a>
-                <a href="{% url 'sharebites:show_main' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">ShareBites</a>
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'artibites' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
+                  ArtiBites
+                </a>
+                <a href="{% url 'MyBites:wishlist' %}" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'wishlist' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
+                  MyBites
+                </a>
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'trackerbites' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
+                  TrackerBites
+                </a>
+                <a href="{% url 'sharebites:show_main' %}" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' and request.path == '/sharebites/' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
+                  ShareBites
+                </a>
               {% elif user.is_staff %}
-                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">ArtiBites</a>
-                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">EditBites</a>
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' and request.path == '/artibites/' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}" aria-current="page">
+                    ArtiBites
+                </a>
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium {% if request.resolver_match.url_name == 'show_main' and request.path == '/editbites/' %}text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">
+                    EditBites
+                </a>
               {% endif %}
             </div>
           </div>
@@ -81,6 +97,7 @@
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">MyBites</a>
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">TrackerBites</a>
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">EditBites</a>
+        <a href="" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">ShareBites</a>
       </div>
     </div>
   </nav>

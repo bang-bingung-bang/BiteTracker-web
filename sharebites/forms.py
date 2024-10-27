@@ -15,6 +15,6 @@ class CommentForm(forms.ModelForm):
                 'rows': 3,
                 'placeholder': 'Add a comment...',
                 'required': True,
-                'class': 'comment-textarea'  # Optional: Add a CSS class for styling
+                'class': 'comment-textarea' 
             }),
         }
