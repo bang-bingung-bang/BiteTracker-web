@@ -241,7 +241,7 @@
                         <p class="text-sm text-gray-500">${calories} calories</p>
                         <p class="text-sm text-gray-500">${date} at ${time}</p>
                         <button class="caltrack-btn-delete-bites" onclick="deleteBiteEntry('${entry.pk}');">Delete</button>
-                        <button class="caltrack-btn-edit-bites" onclick="editBiteEntry('${entry.pk}');">Edit</button>
+                        <a href="edit_bite_entry_ajax/${entry.pk}/" class="caltrack-btn-edit-bites">Edit</a>
                     </div>
                 `;
                 }
