@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Hapus Artikel</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md max-w-md text-center">
+    <h1 class="text-2xl font-bold mb-4">Apakah kamu yakin ingin menghapus artikel ini?</h1>
+    <p class="text-lg mb-6">{{ article.title }}</p>
+    
+    <form method="POST" class="space-y-4">
+        {% csrf_token %}
+        <!-- Tombol Hapus -->
+        <button type="submit" class="w-full py-2 px-4 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600">Hapus</button>
+        
+        <!-- Tombol Kembali ke Artikel -->
+        <a href="{% url 'artibites:article_detail' article.id %}" class="inline-block w-full py-2 px-4 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-700">Kembali ke Artikel</a>
+    </form>
+</div>
+{% endblock content %}

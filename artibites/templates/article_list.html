@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Artikel</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <div class="container mx-auto p-6">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800">Artibites</h1>
+        </div>
+
+        <!-- Tombol untuk menambah artikel baru (hanya untuk admin) -->
+        {% if user.is_staff %}
+        <div class="text-center mb-8">
+            <a href="{% url 'artibites:add_article' %}" class="inline-block bg-gray-800 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-700 transition duration-300">Tambah Artikel Baru</a>
+        </div>
+        {% endif %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for article in articles %}
+            <div class="article-item bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-3">{{ article.title }}</h2>
+                <p class="text-gray-600 mb-4">{{ article.excerpt }}</p>
+                <a href="{% url 'artibites:article_detail' article.id %}" class="text-blue-500 hover:text-blue-700 font-medium">Baca Selengkapnya</a>
+            </div>
+            {% empty %}
+            <p class="col-span-full text-center text-gray-600">Tidak ada artikel</p>
+            {% endfor %}
+        </div>
+
+        <!-- Tombol untuk kembali ke halaman utama -->
+        <div class="text-center mt-10">
+            <a href="{% url 'main:show_main' %}" class="inline-block bg-gray-800 text-white font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">Kembali ke Halaman Utama</a>
+        </div>
+    </div>
+</body>
+</html>

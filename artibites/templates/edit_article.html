@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Edit Artikel</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="container mx-auto p-6 bg-gray-100 rounded-lg shadow-md max-w-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">Edit Artikel</h1>
+    
+    <form method="POST" enctype="multipart/form-data" class="space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Menampilkan form dengan elemen <p> -->
+
+        <!-- Tombol Simpan Perubahan -->
+        <button type="submit" class="w-full py-2 px-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600">Simpan Perubahan</button>
+    </form>
+
+    <!-- Tombol untuk kembali ke artikel detail -->
+    <div class="text-center mt-6">
+        <a href="{% url 'artibites:article_detail' article.id %}" class="inline-block px-4 py-2 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-700">Kembali ke Artikel</a>
+    </div>
+</div>
+{% endblock content %}
