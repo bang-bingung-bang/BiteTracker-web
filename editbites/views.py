@@ -90,14 +90,72 @@ def delete_product(request, pk):
         'product': product
     })
 
-@login_required
-def get_product_json(request):
-    data = Product.objects.all()
+# @login_required
+# def get_product_json(request):
+#     data = Product.objects.all()
     
-    if data.exists():
-        return JsonResponse(serializers.serialize("json", data), safe=False)
-    else:
-        return JsonResponse([], safe=False)
+#     if data.exists():
+#         return JsonResponse(serializers.serialize("json", data), safe=False)
+#     else:
+#         return JsonResponse([], safe=False)
+    
+# @csrf_exempt
+# def get_product_json(request):
+#     print("API called by:", request.user)
+#     products = Product.objects.all().values()
+#     return JsonResponse(list(products), safe=False)
+
+@csrf_exempt
+def get_product_json(request):
+    products = Product.objects.all()
+    product_list = []
+    
+    for product in products:
+        product_dict = {
+            "model": "editbites.product",
+            "pk": product.pk,
+            "fields": {
+                "store": product.store,
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+                "calories": product.calories,
+                "calorie_tag": product.calorie_tag,
+                "vegan_tag": product.vegan_tag,
+                "sugar_tag": product.sugar_tag,
+                "image": product.image,
+                "created_at": product.created_at.isoformat(),
+                "updated_at": product.updated_at.isoformat()
+            }
+        }
+        product_list.append(product_dict)
+    
+    return JsonResponse(product_list, safe=False)
+
+@csrf_exempt
+def get_product_detail_json(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+        product_dict = {
+            "model": "editbites.product",
+            "pk": product.pk,
+            "fields": {
+                "store": product.store,
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+                "calories": product.calories,
+                "calorie_tag": product.calorie_tag,
+                "vegan_tag": product.vegan_tag,
+                "sugar_tag": product.sugar_tag,
+                "image": product.image,
+                "created_at": product.created_at.isoformat(),
+                "updated_at": product.updated_at.isoformat()
+            }
+        }
+        return JsonResponse([product_dict], safe=False)
+    except Product.DoesNotExist:
+        return JsonResponse({"error": "Product not found"}, status=404)
     
 def add_products_from_fixtures(request):
     with open('editbites/fixtures/data.json', 'r') as file:
@@ -171,7 +229,6 @@ def edit_product_mobile(request, pk):
             data = json.loads(request.body)
             product = get_object_or_404(Product, pk=pk)
             
-            # Update fields
             for key, value in data['fields'].items():
                 setattr(product, key, value)
             product.save()

@@ -28,7 +28,7 @@ production = os.getenv("PRODUCTION", False)
 
 DEBUG = not production
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "faiz-akram-bitetracker.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ['*'] #####
 
 # Application definition
 
@@ -51,11 +51,11 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Harus di paling atas
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

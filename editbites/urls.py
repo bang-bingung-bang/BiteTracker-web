@@ -1,4 +1,4 @@
-#Urls.py
+#editbites/urls.py
 
 from django.urls import path
 from editbites import views
@@ -13,6 +13,8 @@ urlpatterns = [
     path('product/<int:pk>/edit/', views.edit_product, name='edit_product'),
     path('delete-product/<int:pk>/', views.delete_product, name='delete_product'),
     path('get_product_json/', views.get_product_json, name='get_product_json'),
+    path('get-product/', views.get_product_json, name='get_product_json'),  # Ubah path ini
+    path('get-product/<int:pk>/', views.get_product_detail_json, name='get_product_detail_json'), #
     path('add_products_from_fixtures/', views.add_products_from_fixtures, name='add_products_from_fixtures'),
     # Mobile
     path('mobile/create/', views.create_product_mobile, name='create_product_mobile'),
