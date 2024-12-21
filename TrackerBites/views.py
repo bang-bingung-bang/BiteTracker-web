@@ -6,11 +6,14 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_http_methods
 from django.utils.html import strip_tags
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from TrackerBites.models import BiteTrackerModel
 from TrackerBites.forms import BiteTrackerForm
 from django.db.models import Sum
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse, HttpResponseBadRequest
+from .models import BiteTrackerModel
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -57,6 +60,26 @@ def add_bite_calorie_entry_ajax(request):
 
     return HttpResponse({'success': True, 'message': 'Product created successfully'}, status=201)
 
+@csrf_exempt
+def add_bite_calorie_entry_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        new_bites = BiteTrackerModel.objects.create(
+            user=request.user,
+            bite_name=data['bite_name'],
+            bite_calories=data['bite_calories'],
+            bite_date=data['bite_date'],
+            bite_time=data['bite_time']
+        )
+
+        new_bites.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+
 def delete_bite_entry_ajax(request, id):
     bite = BiteTrackerModel.objects.get(pk=id, user=request.user)
     if not bite:
@@ -64,6 +87,10 @@ def delete_bite_entry_ajax(request, id):
     bite.delete()
 
     return HttpResponse({'success': True, 'message': 'Bite deleted successfully'}, status=200)
+
+def show_json_by_date(request, date):
+    data = BiteTrackerModel.objects.filter(user=request.user, bite_date=date)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def edit_bite_entry_ajax(request, id):
     bite = BiteTrackerModel.objects.get(pk=id, user = request.user)
@@ -113,3 +140,78 @@ def calculate_total_calories_by_date(request, date):
     }
     json_data = json.dumps(response_data)
     return HttpResponse(json_data, content_type="application/json")
+
+def data_info_by_date(request, date):
+    def calculate_meal_percentage(meal_count):
+        return 100 if meal_count > 0 else 0
+
+    user_bites = BiteTrackerModel.objects.filter(user=request.user, bite_date=date)
+    
+    total_calories = user_bites.aggregate(Sum('bite_calories'))
+    total_calories_sum = total_calories['bite_calories__sum'] or 0
+    
+    total_bites = user_bites.count()
+    
+    meal_times = ['Breakfast', 'Lunch', 'Dinner', 'Snack']
+    meal_counts = {meal: user_bites.filter(bite_time=meal).count() for meal in meal_times}
+    meal_percentages = {meal: calculate_meal_percentage(meal_counts[meal]) for meal in meal_times}
+    
+    response_data = {
+        'total_bites': total_bites,
+        'total_calories': total_calories_sum,
+        'meal_counts': meal_counts,
+        'meal_percentages': meal_percentages,
+    }
+    
+    return JsonResponse(response_data)
+
+@csrf_exempt
+def edit_bite_tracker_entry(request, id):
+    if request.method == 'POST':
+        # Ambil data dari request
+        data = json.loads(request.body)
+
+        bite_time = data['bite_time']
+        bite_date = data['bite_date']
+        bite_calories = data['bite_calories']
+        bite_name = data['bite_name']
+        
+        # Validasi data
+        if not bite_time or not bite_date or not bite_calories or not bite_name:
+            return HttpResponseBadRequest("Missing required fields")
+        
+        try:
+            bite_calories = int(bite_calories)
+        except ValueError:
+            return HttpResponseBadRequest("Invalid calories value")
+        
+        # Dapatkan entri yang akan diedit
+        bite_entry = BiteTrackerModel.objects.get(pk=id, user = request.user)
+        
+        # Perbarui entri dengan data baru
+        bite_entry.bite_name = bite_name
+        bite_entry.bite_time = bite_time
+        bite_entry.bite_date = bite_date
+        bite_entry.bite_calories = bite_calories
+        bite_entry.save()
+        
+        # Kembalikan respons sukses
+        return JsonResponse({
+            'id': bite_entry.id,
+            'bite_time': bite_entry.bite_time,
+            'bite_date': bite_entry.bite_date,
+            'bite_calories': bite_entry.bite_calories,
+            'status': 'success'
+        }, status=200)
+    else:
+        return HttpResponseBadRequest("Invalid request method")
+
+@csrf_exempt
+def delete_bite_flutter(request, id):
+    if request.method == 'POST':
+        bite = BiteTrackerModel.objects.filter(pk=id, user=request.user)
+        if not bite:
+            return JsonResponse({'success': False, 'error': 'Bite not found'}, status=404)
+        bite.delete()
+        return JsonResponse({'success': True, 'message': 'Bite deleted successfully'}, status=200)
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=400)
