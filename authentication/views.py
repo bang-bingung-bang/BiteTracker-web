@@ -13,9 +13,13 @@ def login(request):
     if user is not None:
         if user.is_active:
             auth_login(request, user)
+            user = User.objects.get(user=user)
             # Status login sukses.
             return JsonResponse({
                 "username": user.username,
+                "email": user.email,
+                "role": user.is_staff,
+                "user_id": user.pk,
                 "status": True,
                 "message": "Login sukses!"
                 # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
