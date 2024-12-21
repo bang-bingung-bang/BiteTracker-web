@@ -13,7 +13,7 @@ def login(request):
     if user is not None:
         if user.is_active:
             auth_login(request, user)
-            user = User.objects.get(user=user)
+            user = User.objects.get(username=username)
             # Status login sukses.
             return JsonResponse({
                 "username": user.username,
