@@ -1,3 +1,5 @@
+#editbites/views.py
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
@@ -5,6 +7,7 @@ from .models import Product
 from .forms import ProductForm
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 def is_admin(user):
@@ -125,3 +128,86 @@ def add_products_from_fixtures(request):
             print(product)
 
     return HttpResponse('Products added successfully!')
+
+@csrf_exempt
+@login_required
+@user_passes_test(is_admin)
+def create_product_mobile(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            product = Product.objects.create(
+                store=data['fields']['store'],
+                name=data['fields']['name'],
+                price=data['fields']['price'],
+                description=data['fields']['description'],
+                calories=data['fields']['calories'],
+                calorie_tag=data['fields']['calorie_tag'],
+                vegan_tag=data['fields']['vegan_tag'],
+                sugar_tag=data['fields']['sugar_tag'],
+                image=data['fields']['image']
+            )
+            return JsonResponse({
+                "status": "success",
+                "message": "Product created successfully!",
+                "product_id": product.id
+            })
+        except Exception as e:
+            return JsonResponse({
+                "status": "error",
+                "message": str(e)
+            }, status=400)
+    return JsonResponse({
+        "status": "error",
+        "message": "Invalid request method."
+    }, status=405)
+
+@csrf_exempt
+@login_required
+@user_passes_test(is_admin)
+def edit_product_mobile(request, pk):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            product = get_object_or_404(Product, pk=pk)
+            
+            # Update fields
+            for key, value in data['fields'].items():
+                setattr(product, key, value)
+            product.save()
+            
+            return JsonResponse({
+                "status": "success",
+                "message": "Product updated successfully!"
+            })
+        except Exception as e:
+            return JsonResponse({
+                "status": "error",
+                "message": str(e)
+            }, status=400)
+    return JsonResponse({
+        "status": "error",
+        "message": "Invalid request method."
+    }, status=405)
+
+@csrf_exempt
+@login_required
+@user_passes_test(is_admin)
+def delete_product_mobile(request, pk):
+    if request.method == 'POST':
+        try:
+            product = get_object_or_404(Product, pk=pk)
+            product.delete()
+            return JsonResponse({
+                "status": "success",
+                "message": "Product deleted successfully!"
+            })
+        except Exception as e:
+            return JsonResponse({
+                "status": "error",
+                "message": str(e)
+            }, status=400)
+    return JsonResponse({
+        "status": "error",
+        "message": "Invalid request method."
+    }, status=405)

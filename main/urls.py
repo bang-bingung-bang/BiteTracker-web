@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import register, login_user, show_main, logout_user
+from main.views import register, login_user, show_main, logout_user, login_mobile, register_mobile
 
 app_name = 'main'
 
@@ -8,4 +8,8 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
+    # Mobile endpoints
+    path('auth/login/', login_mobile, name='login_mobile'),
+    path('auth/register/', register_mobile, name='register_mobile'),
+    
 ]
