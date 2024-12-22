@@ -90,7 +90,7 @@ SESSION_COOKIE_SAMESITE = 'None'
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
-    "faiz-akram-bitetracker.pbp.cs.ui.ac.id"
+    "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id"
 ]
 
 ROOT_URLCONF = 'bite_tracker.urls'
