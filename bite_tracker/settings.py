@@ -91,6 +91,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://faiz-akram-bitetrackers.pbp.cs.ui.ac.id",
     "http://faiz-akram-bitetrackers.pbp.cs.ui.ac.id",
 ]
+
 ROOT_URLCONF = 'bite_tracker.urls'
 
 TEMPLATES = [
@@ -185,5 +186,5 @@ CSRF_TRUSTED_ORIGINS = [
     "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id"
     "https://faiz-akram-bitetrackers.pbp.cs.ui.ac.id",
     "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id",
-
+    "http://faiz-akram-bitetrackers.pbp.cs.ui.ac.id",
 ]
