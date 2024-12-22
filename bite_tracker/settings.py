@@ -98,7 +98,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:62319",  # Tambahkan asal aplikasi Flutter
     "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id",
 ]
-
 ROOT_URLCONF = 'bite_tracker.urls'
 
 TEMPLATES = [
