@@ -6,21 +6,25 @@
 
 {% block content %}
 {% include 'navbar.html' %}
-<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-10 min-h-screen bg-gray-100 flex flex-col">
+<div class="overflow-x-hidden px-4 md:px-8 pt-10 min-h-screen bg-gray-100 flex flex-col">
     <div class="flex justify-end mb-6">
         <input type="date" id="selectedDate" class="border rounded-lg px-3 py-2 mr-4" onchange="refreshBiteEntriesByDate();">
     </div>
 
     <div class="flex gap-2 mb-10 items-stretch">
         <div id="calorieInformation" class="flex-1"></div>
-        <div class="caltrack-entry-cards">
-            <div class="grid grid-cols-1 flex items-center">
-                <div class="caltrack-entry-title">Finished your bites for the day?</div>
-                <button data-modal-target="calorieModal" data-modal-toggle="calorieModal" class="btn-add-bites" onclick="showModal();">
+        <div class="caltrack-entry-cards flex items-center justify-center">
+            <div class="text-center">
+                <div class="caltrack-entry-title mb-4">Finished your bites for the day?</div>
+                <button data-modal-target="calorieModal" data-modal-toggle="calorieModal" 
+                        class="btn-add-bites" 
+                        onclick="showModal();">
                     Add New Bites
                 </button>
             </div>
         </div>
+    </div>
+
     </div>
     
     <!-- entry list dengan AJAX-->

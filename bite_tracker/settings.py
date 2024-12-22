@@ -28,7 +28,7 @@ production = os.getenv("PRODUCTION", False)
 
 DEBUG = not production
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "faiz-akram-bitetracker.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "faiz-akram-bitetracker.pbp.cs.ui.ac.id", '10.0.2.2']
 
 # Application definition
 
@@ -64,6 +64,25 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'

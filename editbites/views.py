@@ -1,3 +1,5 @@
+#editbites/views.py
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
@@ -5,6 +7,7 @@ from .models import Product
 from .forms import ProductForm
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 def is_admin(user):
@@ -13,10 +16,8 @@ def is_admin(user):
 @login_required
 def product_list(request):
     filter_param = request.GET.get('filter')
-    search_query = request.GET.get('search')
     products = Product.objects.all()
 
-    # Apply filter based on filter_param
     if filter_param:
         if filter_param == 'high_calories':
             products = products.filter(calorie_tag='HIGH')
@@ -30,10 +31,6 @@ def product_list(request):
             products = products.filter(vegan_tag='NON_VEGAN')
         elif filter_param == 'vegan':
             products = products.filter(vegan_tag='VEGAN')
-
-    # Apply search filter if search_query is provided
-    if search_query:
-        products = products.filter(name__icontains=search_query)
 
     return render(request, 'editbites/product_list.html', {
         'products': products,
@@ -93,14 +90,72 @@ def delete_product(request, pk):
         'product': product
     })
 
-@login_required
-def get_product_json(request):
-    data = Product.objects.all()
+# @login_required
+# def get_product_json(request):
+#     data = Product.objects.all()
     
-    if data.exists():
-        return JsonResponse(serializers.serialize("json", data), safe=False)
-    else:
-        return JsonResponse([], safe=False)
+#     if data.exists():
+#         return JsonResponse(serializers.serialize("json", data), safe=False)
+#     else:
+#         return JsonResponse([], safe=False)
+    
+# @csrf_exempt
+# def get_product_json(request):
+#     print("API called by:", request.user)
+#     products = Product.objects.all().values()
+#     return JsonResponse(list(products), safe=False)
+
+@csrf_exempt
+def get_product_json(request):
+    products = Product.objects.all()
+    product_list = []
+    
+    for product in products:
+        product_dict = {
+            "model": "editbites.product",
+            "pk": product.pk,
+            "fields": {
+                "store": product.store,
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+                "calories": product.calories,
+                "calorie_tag": product.calorie_tag,
+                "vegan_tag": product.vegan_tag,
+                "sugar_tag": product.sugar_tag,
+                "image": product.image,
+                "created_at": product.created_at.isoformat(),
+                "updated_at": product.updated_at.isoformat()
+            }
+        }
+        product_list.append(product_dict)
+    
+    return JsonResponse(product_list, safe=False)
+
+@csrf_exempt
+def get_product_detail_json(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+        product_dict = {
+            "model": "editbites.product",
+            "pk": product.pk,
+            "fields": {
+                "store": product.store,
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+                "calories": product.calories,
+                "calorie_tag": product.calorie_tag,
+                "vegan_tag": product.vegan_tag,
+                "sugar_tag": product.sugar_tag,
+                "image": product.image,
+                "created_at": product.created_at.isoformat(),
+                "updated_at": product.updated_at.isoformat()
+            }
+        }
+        return JsonResponse([product_dict], safe=False)
+    except Product.DoesNotExist:
+        return JsonResponse({"error": "Product not found"}, status=404)
     
 def add_products_from_fixtures(request):
     with open('editbites/fixtures/data.json', 'r') as file:
@@ -131,3 +186,85 @@ def add_products_from_fixtures(request):
             print(product)
 
     return HttpResponse('Products added successfully!')
+
+@csrf_exempt
+@login_required
+@user_passes_test(is_admin)
+def create_product_mobile(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            product = Product.objects.create(
+                store=data['fields']['store'],
+                name=data['fields']['name'],
+                price=data['fields']['price'],
+                description=data['fields']['description'],
+                calories=data['fields']['calories'],
+                calorie_tag=data['fields']['calorie_tag'],
+                vegan_tag=data['fields']['vegan_tag'],
+                sugar_tag=data['fields']['sugar_tag'],
+                image=data['fields']['image']
+            )
+            return JsonResponse({
+                "status": "success",
+                "message": "Product created successfully!",
+                "product_id": product.id
+            })
+        except Exception as e:
+            return JsonResponse({
+                "status": "error",
+                "message": str(e)
+            }, status=400)
+    return JsonResponse({
+        "status": "error",
+        "message": "Invalid request method."
+    }, status=405)
+
+@csrf_exempt
+@login_required
+@user_passes_test(is_admin)
+def edit_product_mobile(request, pk):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            product = get_object_or_404(Product, pk=pk)
+            
+            for key, value in data['fields'].items():
+                setattr(product, key, value)
+            product.save()
+            
+            return JsonResponse({
+                "status": "success",
+                "message": "Product updated successfully!"
+            })
+        except Exception as e:
+            return JsonResponse({
+                "status": "error",
+                "message": str(e)
+            }, status=400)
+    return JsonResponse({
+        "status": "error",
+        "message": "Invalid request method."
+    }, status=405)
+
+@csrf_exempt
+@login_required
+@user_passes_test(is_admin)
+def delete_product_mobile(request, pk):
+    if request.method == 'POST':
+        try:
+            product = get_object_or_404(Product, pk=pk)
+            product.delete()
+            return JsonResponse({
+                "status": "success",
+                "message": "Product deleted successfully!"
+            })
+        except Exception as e:
+            return JsonResponse({
+                "status": "error",
+                "message": str(e)
+            }, status=400)
+    return JsonResponse({
+        "status": "error",
+        "message": "Invalid request method."
+    }, status=405)

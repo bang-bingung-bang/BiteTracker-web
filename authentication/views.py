@@ -1,3 +1,5 @@
+#views.py
+
 import json
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
@@ -57,45 +59,61 @@ def logout(request):
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        username = data['username']
-        password1 = data['password1']
-        password2 = data['password2']
-        email = data['email']
-        role = data['superuser']
+        try:
+            # Ambil data dari POST request
+            username = request.POST.get('username')
+            email = request.POST.get('email')
+            password1 = request.POST.get('password1')
+            password2 = request.POST.get('password2')
+            role = request.POST.get('role', 'member')
 
+            # Validasi input
+            if not all([username, email, password1, password2]):
+                return JsonResponse({
+                    "status": False,
+                    "message": "Semua field harus diisi!"
+                }, status=400)
 
+            if password1 != password2:
+                return JsonResponse({
+                    "status": False,
+                    "message": "Password tidak cocok!"
+                }, status=400)
+            
+            if User.objects.filter(username=username).exists():
+                return JsonResponse({
+                    "status": False,
+                    "message": "Username sudah digunakan!"
+                }, status=400)
 
-        # Check if the passwords match
-        if password1 != password2:
+            # Buat user baru
+            user = User.objects.create_user(
+                username=username,
+                password=password1,
+                email=email
+            )
+            
+            # Set role
+            user.is_staff = (role == 'admin')
+            user.save()
+            
+            return JsonResponse({
+                "status": True,
+                "message": "Register berhasil!",
+                "user": {
+                    "username": user.username,
+                    "email": user.email,
+                    "role": user.is_staff,
+                }
+            }, status=200)
+            
+        except Exception as e:
             return JsonResponse({
                 "status": False,
-                "message": "Passwords do not match."
+                "message": f"Registration failed: {str(e)}"
             }, status=400)
-        
-        # Check if the username is already taken
-        if User.objects.filter(username=username).exists():
-            return JsonResponse({
-                "status": False,
-                "message": "Username already exists."
-            }, status=400)
-        
-        is_staff = False
-        if role == 'admin':
-            is_staff = True
 
-        # Create the new user
-        user = User.objects.create_user(username=username, password=password1,is_staff=is_staff, email=email)
-        user.save()
-        
-        return JsonResponse({
-            "username": user.username,
-            "status": 'success',
-            "message": "User created successfully!"
-        }, status=200)
-    
-    else:
-        return JsonResponse({
-            "status": False,
-            "message": "Invalid request method."
-        }, status=400)
+    return JsonResponse({
+        "status": False,
+        "message": "Method not allowed."
+    }, status=405)
