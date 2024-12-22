@@ -93,6 +93,12 @@ CSRF_TRUSTED_ORIGINS = [
     "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id"
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:62319",  # Tambahkan asal aplikasi Flutter
+    "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id",
+]
+
 ROOT_URLCONF = 'bite_tracker.urls'
 
 TEMPLATES = [
