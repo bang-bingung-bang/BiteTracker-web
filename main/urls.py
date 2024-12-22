@@ -9,7 +9,7 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     # Mobile endpoints
-    path('auth/login/', login_mobile, name='login_mobile'),
-    path('auth/register/', register_mobile, name='register_mobile'),
+    path('authen/login/', login_mobile, name='login_mobile'),
+    path('authen/register/', register_mobile, name='register_mobile'),
     
 ]
