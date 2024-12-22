@@ -141,3 +141,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'main:login'
 LOGIN_REDIRECT_URL = 'main:show_main'
 LOGOUT_REDIRECT_URL = 'main:login'
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id/"
+]
