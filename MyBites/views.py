@@ -69,36 +69,14 @@ def view_wishlist_flutter(request):
         return JsonResponse({"wishlist": wishlist_data}, safe=False)
 
 @csrf_exempt
-def remove_flutter(request, product_id):
-    if not request.user.is_authenticated:
-        return JsonResponse({"error": "User not authenticated"}, status=401)
-
-    product = get_object_or_404(Product, id=product_id)
-
-    MyBites.objects.filter(user=request.user, product=product).delete()
-
-    updated_wishlist_items = MyBites.objects.filter(user=request.user)
-
-    wishlist_data = [
-        {
-            "model": "editbites.product",
-            "pk": item.product.pk,
-            "fields": {
-                "store": item.product.store,
-                "name": item.product.name,
-                "price": item.product.price,
-                "description": item.product.description,
-                "calories": item.product.calories,
-                "calorie_tag": item.product.calorie_tag,
-                "vegan_tag": item.product.vegan_tag,
-                "sugar_tag": item.product.sugar_tag,
-                "image": item.product.get_image_url(),
-            }
-        }
-        for item in updated_wishlist_items
-    ]
-
-    return JsonResponse({"wishlist": wishlist_data}, safe=False)
+def remove_flutter(request, id):
+    if request.method == 'POST':
+        bite = MyBites.objects.filter(pk=id, user=request.user)
+        if not bite:
+            return JsonResponse({'success': False, 'error': 'Bite not found'}, status=404)
+        bite.delete()
+        return JsonResponse({'success': True, 'message': 'Bite deleted successfully'}, status=200)
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=400)
 
 @login_required
 def view_wishlist(request):
