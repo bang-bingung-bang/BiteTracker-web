@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse, HttpResponseBadRequest
 
 # Create your views here.
 def show_main(request):
@@ -28,6 +30,75 @@ def add_to_wishlist(request, product_id):
     # else:
     #     messages.warning(request, "You need to log in to add products to your wishlist.")
     #     return redirect('MyBites:show_main')
+
+@csrf_exempt
+def add_wishlist_flutter(request, product_id):
+    if request.method == "POST":
+        product = get_object_or_404(Product, id=product_id)
+        new_bites = MyBites.objects.create(
+            user=request.user,
+            product=product
+        )
+        new_bites.save()
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+@csrf_exempt
+def view_wishlist_flutter(request):
+    if request.method == "GET":
+        wishlist_items = MyBites.objects.filter(user=request.user)
+        wishlist_data = [
+            {
+                "model": "editbites.product",
+                "pk": item.pk,
+                "fields": {
+                    "store": item.product.store,
+                    "name": item.product.name,
+                    "price": item.product.price,
+                    "description": item.product.description,
+                    "calories": item.product.calories,
+                    "calorie_tag": item.product.calorie_tag,
+                    "vegan_tag": item.product.vegan_tag,
+                    "sugar_tag": item.product.sugar_tag,
+                    "image": item.product.get_image_url(),
+                }
+            }
+            for item in wishlist_items
+        ]
+        return JsonResponse({"wishlist": wishlist_data}, safe=False)
+
+@csrf_exempt
+def remove_flutter(request, product_id):
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "User not authenticated"}, status=401)
+
+    product = get_object_or_404(Product, id=product_id)
+
+    MyBites.objects.filter(user=request.user, product=product).delete()
+
+    updated_wishlist_items = MyBites.objects.filter(user=request.user)
+
+    wishlist_data = [
+        {
+            "model": "editbites.product",
+            "pk": item.product.pk,
+            "fields": {
+                "store": item.product.store,
+                "name": item.product.name,
+                "price": item.product.price,
+                "description": item.product.description,
+                "calories": item.product.calories,
+                "calorie_tag": item.product.calorie_tag,
+                "vegan_tag": item.product.vegan_tag,
+                "sugar_tag": item.product.sugar_tag,
+                "image": item.product.get_image_url(),
+            }
+        }
+        for item in updated_wishlist_items
+    ]
+
+    return JsonResponse({"wishlist": wishlist_data}, safe=False)
 
 @login_required
 def view_wishlist(request):
