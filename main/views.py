@@ -126,3 +126,5 @@ def register_mobile(request):
         "status": "error",
         "message": "Invalid request method"
     }, status=400)
+
+
