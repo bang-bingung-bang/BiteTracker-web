@@ -8,4 +8,4 @@ class MyBites(models.Model):
     added_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username}'s wishlist: {self.product.nama_product}"
+        return f"{self.user.username}'s wishlist: {self.product.name}"

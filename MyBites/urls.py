@@ -13,5 +13,5 @@ urlpatterns = [
     path('products/', show_product_list, name='product_list'),
     path('flutter/add/<int:product_id>/', add_wishlist_flutter, name='add_wishlist_flutter'),
     path('flutter/view/', view_wishlist_flutter, name='view_wishlist_flutter'),
-    path("flutter/remove", remove_flutter, name="remove_flutter")
+    path('flutter/remove/<int:id>/', remove_flutter, name="remove_flutter")
 ]
