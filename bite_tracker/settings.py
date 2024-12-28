@@ -52,11 +52,11 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -159,13 +159,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-DEBUG = True
-# if DEBUG:
-#     STATICFILES_DIRS = [
-#         BASE_DIR / 'static'
-#     ]
-# else:
-#     STATIC_ROOT = BASE_DIR / 'static'
+# DEBUG = True
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static'
+    ]
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -183,7 +183,7 @@ SESSION_COOKIE_SAMESITE = 'None'
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
-    "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id"
+    "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id",
     "https://faiz-akram-bitetrackers.pbp.cs.ui.ac.id",
     "https://faiz-akram-bitetracker.pbp.cs.ui.ac.id",
     "http://faiz-akram-bitetrackers.pbp.cs.ui.ac.id",
